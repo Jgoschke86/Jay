@@ -1,9 +1,11 @@
 from random import randint
 
 
-dice_roll = randint(1,6), randint(1,6), randint(1,6), randint(1,6), randint(1,6)
+dice_roll = [randint(1,6), randint(1,6), randint(1,6), randint(1,6), randint(1,6)]
+saved_dice = []
+final_dice = saved_dice.extend(dice_roll)
 
-print(dice_roll)
+
 
 
 # Scorecard [line number, label, value 1, value 2]
@@ -29,7 +31,7 @@ if selection <= 6:
         print("This number already has it's slots full. Please choose a different number.")
 
 
-# Where special scoring starts
+# 3 of a kind
 if selection == 7:
     if len(card[7]) == 2:
         num = dice_roll.count(1)
@@ -37,6 +39,7 @@ if selection == 7:
     else:
         print("This number already has it's slots full. Please choose a different number.")
 
+# 4 of a kind
 if selection == 1:
     if len(card[1]) == 1:
         num = dice_roll.count(1)
@@ -47,6 +50,7 @@ if selection == 1:
     else:
         print("This number already has it's slots full. Please choose a different number.")
 
+# Full house
 if selection == 1:
     if len(card[1]) == 1:
         num = dice_roll.count(1)
@@ -57,6 +61,7 @@ if selection == 1:
     else:
         print("This number already has it's slots full. Please choose a different number.")
 
+# Small straight
 if selection == 1:
     if len(card[1]) == 1:
         num = dice_roll.count(1)
@@ -67,6 +72,7 @@ if selection == 1:
     else:
         print("This number already has it's slots full. Please choose a different number.")
 
+ # Large straight
 if selection == 1:
     if len(card[1]) == 1:
         num = dice_roll.count(1)
@@ -77,6 +83,7 @@ if selection == 1:
     else:
         print("This number already has it's slots full. Please choose a different number.")
 
+# Yahtzee
 if selection == 1:
     if len(card[1]) == 1:
         num = dice_roll.count(1)
@@ -93,7 +100,7 @@ if selection == 13:
         card.append(num[13])
     else:
         print("This number already has it's slots full. Please choose a different number.")
-
+# Yahtzee bonus
 if selection == 1:
     if len(card[1]) == 1:
         num = dice_roll.count(1)
