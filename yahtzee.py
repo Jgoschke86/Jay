@@ -60,10 +60,10 @@ while True:
                     # Score input for 1-6
                     if selection <= 6:
                         if len(card[selection]) == 2:
-                            num = dice_roll.count(selection)
+                            num = current_dice.count(selection)
                             card.append(int(selection) * num)
                         elif len(card[selection]) == 3:
-                            num = dice_roll.count(selection)
+                            num = current_dice.count(selection)
                             card.append(int(selection) * num)
                         else:
                             print("This number already has it's slots full. Please choose a different number.")
