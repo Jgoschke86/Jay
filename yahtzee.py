@@ -18,17 +18,31 @@ welcome = input("""Please make a selection.
 """)
 cls()
 if welcome == str(1):
-
-    while pause != True:
-        current_dice = []
-        dice_roll = 5
-        for x in range(0, dice_roll):
-            current_dice.append(randint(1,6))
-        saved_dice = []
+    roll = 0
+    turn = 0
+    dice_roll = 5
+    current_dice = []
+    saved_dice = []
+    while True:
         
+        
+        
+        if roll == 3:
+            print("You are out of rolls. Please make another selection.")
+        
+
+        else:
+            roll += 1
+            
+            
+            for x in range(0, dice_roll):
+                current_dice.append(randint(1,6))
+                
 
 
         while True:
+            
+            print(roll)
             print("Dice rolled - " + str(current_dice))
             print("Dice saved - " + str(saved_dice))                
             after_roll = int(input("""What would you like to do?
@@ -37,20 +51,20 @@ if welcome == str(1):
 3. Enter score.
 4. See scorecard
 """))
-            cls()
+
+            
             if after_roll == 1:
                 cls()
                 break
             elif after_roll == 2:
                 to_save = int(input("Please enter the number you would like to save. "))
-                if to_save in current_dice:                          # Takes saved number and moves it to 
-                    save = current_dice.index(to_save)               # saved_dice list
+                if to_save in current_dice:                          # Takes saved number and moves it to saved_dice list
+                    save = current_dice.index(to_save)
                     saved_dice.append(to_save)
                     current_dice.pop(save)
                     dice_roll -= 1
                     cls()
                 else:
-                    print("Not a valid number.")
                     cls()
             elif after_roll == 3:
                 #  Prints card
@@ -58,7 +72,7 @@ if welcome == str(1):
                     print(" ".join(map(str, card[i])))
                 print("Dice - " + str(current_dice + saved_dice))
                 selection = int(input("Where would you like to add your score? "))
-
+                turn += 1
 
                 # Score input for 1-6
                 if selection <= 6:
@@ -69,6 +83,7 @@ if welcome == str(1):
                         temp.append(total)
                         card.pop(selection)
                         card.insert(selection,temp)
+                        roll == 0
                         cls()
                         break
                     elif len(card[selection]) == 3:
@@ -78,6 +93,7 @@ if welcome == str(1):
                         temp.append(total)
                         card.pop(selection)
                         card.insert(selection,temp)
+                        roll == 0
                         cls()
                         break
                     else:
