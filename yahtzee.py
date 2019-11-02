@@ -6,6 +6,11 @@ def cls():
 pause = False
 cls()
 
+def score_to_card():
+    temp = card[selection]
+    temp.append(total)
+    card.pop(selection)
+    card.insert(selection,temp)
 
 
 # Scorecard [line number, label, value 1, value 2]
@@ -23,7 +28,7 @@ if welcome == str(1):
     saved_dice = []                         # Dice saved and not rerolled
     turn = 1                                # Keeps track of turn count, max 13
     dice_roll = 5                           # Number of dice to be rolled
-    while True:
+    while turn != 14:
         
         
         if roll <= 2:    
@@ -35,7 +40,7 @@ if welcome == str(1):
             print("You are out of rolls. Please place a score.")    
     
         while True:
-            
+            print(turn)
             print(roll)
             print("Dice rolled - " + str(current_dice))
             print("Dice saved - " + str(saved_dice))                
@@ -58,10 +63,10 @@ if welcome == str(1):
                     saved_dice.append(to_save)
                     current_dice.pop(save)
                     dice_roll -= 1
-                    cls()
+                    
                 else:
                     pass
-                    cls()
+                cls()
             
             elif after_roll == str(3):
                 for i in range(1,14):                                       #  Prints card
@@ -71,32 +76,32 @@ if welcome == str(1):
                 selection = int(input("Where would you like to add your score? "))
                 turn += 1
 
-                # Score input for 1-6
-                if selection <= 6 and len(card[selection]) <= 3:
+                
+                if selection <= 6 and len(card[selection]) <= 3:                        # Score input for 1-6
                     num = current_dice.count(selection) + saved_dice.count(selection)
                     total = selection * num
-                    temp = card[selection]
-                    temp.append(total)
-                    card.pop(selection)
-                    card.insert(selection,temp)
+                    score_to_card()
                     roll = 0
                     dice_roll = 5
                     saved_dice.clear()
                     cls()
                     break
                     
-                else:
-                    cls()
-                    print("This number already has it's slots full. Please choose a different number.")
+                
 
 
-                # # 3 of a kind
-                # if selection == 7:
-                #     if len(card[7]) == 2:
-                #         num = dice_roll.count(1)
-                #         card.append(1 * num)
-                #     else:
-                #         print("This number already has it's slots full. Please choose a different number.")
+                # 3 of a kind
+                if selection == 7:
+                    if len(card[7]) == 2:
+                        dice = current_dice + saved_dice
+                        
+
+                        total = sum(current_dice + saved_dice)
+                        score_to_card()
+                        print(card)
+
+                    else:
+                        print("This number already has it's slots full. Please choose a different number.")
 
                 # # 4 of a kind
                 # if selection == 1:
@@ -169,7 +174,9 @@ if welcome == str(1):
                 #         card.append(1 * num)
                 #     else:
                 #         print("This number already has it's slots full. Please choose a different number.")
-
+                else:
+                    cls()
+                    print("This number already has it's slots full. Please choose a different number.")
             elif after_roll == str(4):
                 cls()
                 #  Prints card
