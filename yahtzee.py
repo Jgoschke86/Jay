@@ -11,7 +11,7 @@ def score_to_card():
     temp.append(total)
     card.pop(selection)
     card.insert(selection,temp)
-def stat_clear():
+
     
 
 # Scorecard line number, label, value 1, value 2
@@ -97,12 +97,16 @@ if welcome == str(1):
                         dice = current_dice + saved_dice
                         p = []
                         q = 1
-                        for i in range(1,6):
+                        for i in range(0,6):
                             p.append(dice.count(q))
                             q += 1
-                        if 3 in p:
+                        if 3 or 4 or 5 in p:
                             total = sum(current_dice + saved_dice)
                             score_to_card()
+                            roll = 0
+                            dice_roll = 5
+                            saved_dice.clear()
+                            cls()
                         else:
                             zero = input("You don't have the proper dice for this. Would you like to enter a 0? y/n  ")
                             if zero == "y":
