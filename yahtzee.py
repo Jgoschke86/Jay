@@ -11,9 +11,10 @@ def score_to_card():
     temp.append(total)
     card.pop(selection)
     card.insert(selection,temp)
+def stat_clear():
+    
 
-
-# Scorecard [line number, label, value 1, value 2]
+# Scorecard line number, label, value 1, value 2
 card = [[], [1, "Ones"], [2, "Twos"], [3, "Threes"], [4, "Fours"], [5, "Fives"], [6, "Sixes"], [7, "Three of a kind"], [8, "Four of a kind"], [9, "Full house"], [10, "Small straight"], [11, "Large straight"], [12, "Yahtzee"], [13, "Chance"], [14, "Yahtzee bonus"]]
 
 
@@ -94,11 +95,25 @@ if welcome == str(1):
                 if selection == 7:
                     if len(card[7]) == 2:
                         dice = current_dice + saved_dice
-                        
-
-                        total = sum(current_dice + saved_dice)
-                        score_to_card()
-                        print(card)
+                        p = []
+                        q = 1
+                        for i in range(1,6):
+                            p.append(dice.count(q))
+                            q += 1
+                        if 3 in p:
+                            total = sum(current_dice + saved_dice)
+                            score_to_card()
+                        else:
+                            zero = input("You don't have the proper dice for this. Would you like to enter a 0? y/n  ")
+                            if zero == "y":
+                                total = 0
+                                score_to_card()
+                                roll = 0
+                                dice_roll = 5
+                                saved_dice.clear()
+                                cls()
+                            else:
+                                pass
 
                     else:
                         print("This number already has it's slots full. Please choose a different number.")
