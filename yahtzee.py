@@ -6,7 +6,13 @@ def cls():
 pause = False
 cls()
 
-def score_to_card():
+def score_to_card_top():
+    temp = card[selection]
+    temp.append(total)
+    top_bonus.append(total)
+    card.pop(selection)
+    card.insert(selection,temp)
+def score_to_card__bottom():
     temp = card[selection]
     temp.append(total)
     card.pop(selection)
@@ -29,6 +35,7 @@ if welcome == str(1):
     saved_dice = []                         # Dice saved and not rerolled
     turn = 1                                # Keeps track of turn count, max 13
     dice_roll = 5                           # Number of dice to be rolled
+    bonus = []
     while turn != 14:
         
         
@@ -78,10 +85,10 @@ if welcome == str(1):
                 turn += 1
 
                 
-                if selection <= 6 and len(card[selection]) <= 3:                        # Score input for 1-6
-                    num = current_dice.count(selection) + saved_dice.count(selection)
-                    total = selection * num
-                    score_to_card()
+                if selection <= 6 and len(card[selection]) == 2:                        # Score input for 1-6
+                    dice = current_dice.count(selection) + saved_dice.count(selection)
+                    total = selection * dice
+                    score_to_card_top()
                     roll = 0
                     dice_roll = 5
                     saved_dice.clear()
@@ -103,13 +110,13 @@ if welcome == str(1):
 
                         if 3 or 4 or 5 in p:
                             total = sum(current_dice + saved_dice)
-                            score_to_card()
+                            score_to_card_bottom()
                             
                         else:
                             zero = input("You don't have the proper dice for this. Would you like to enter a 0? y/n  ")
                             if zero == "y":
                                 total = 0
-                                score_to_card()
+                                score_to_card__bottom()
                             else:
                                 pass
                         roll = 0
@@ -132,13 +139,13 @@ if welcome == str(1):
                             q += 1
                         if 4 or 5 in p:
                             total = sum(current_dice + saved_dice)
-                            score_to_card()
+                            score_to_card__bottom()
                             
                         else:
                             zero = input("You don't have the proper dice for this. Would you like to enter a 0? y/n  ")
                             if zero == "y":
                                 total = 0
-                                score_to_card()
+                                score_to_card__bottom()
                                 
                             else:
                                 pass
@@ -163,13 +170,13 @@ if welcome == str(1):
                             q += 1
                         if 2 and 3 in p:
                             total = 25
-                            score_to_card()
+                            score_to_card__bottom()
                             
                         else:
                             zero = input("You don't have the proper dice for this. Would you like to enter a 0? y/n  ")
                             if zero == "y":
                                 total = 0
-                                score_to_card()
+                                score_to_card__bottom()
                                 
                             else:
                                 pass
@@ -204,7 +211,7 @@ if welcome == str(1):
                 #     else:
                 #         print("This number already has it's slots full. Please choose a different number.")
 
-                 # Yahtzee
+                # Yahtzee
                 if selection == 12:
                     if len(card[12]) == 2:
                         dice = current_dice + saved_dice
@@ -215,13 +222,13 @@ if welcome == str(1):
                             q += 1
                         if 6 in p:
                             total = 50
-                            score_to_card()
+                            score_to_card__bottom()
                             
                         else:
                             zero = input("You don't have the proper dice for this. Would you like to enter a 0? y/n  ")
                             if zero == "y":
                                 total = 0
-                                score_to_card()
+                                score_to_card__bottom()
                                 
                             else:
                                 pass
@@ -239,7 +246,7 @@ if welcome == str(1):
                     if len(card[13]) == 2:
                         dice = current_dice + saved_dice
                         total = sum(dice)
-
+                        score_to_card_bottom()
                 # Yahtzee Bonus
                 if selection == 14:
                     if len(card[12]) == 3:
@@ -251,11 +258,15 @@ if welcome == str(1):
                             q += 1
                         if 6 in p:
                             total = 50
-                            score_to_card()
-                    
-
+                            score_to_card__bottom()
                     else:
                         print("You are not able to do this right now.")
+
+                # Top section bonus
+                if bonus.count() == 6:
+                    s = sum(bonus)
+                    if s >= 63:
+                        bonus.append(35)
                 
             elif after_roll == str(4):
                 cls()
