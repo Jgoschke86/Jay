@@ -1,9 +1,12 @@
-m = [[0,0,0],[1,1,1],[2,2,2],[3,3,3],[4,4,4],[5,5,5],[6,6,6]]
-score = []
+dice = [3,3,4,7,2,1]
+p = []
 q = 1
+
 for i in range(0,6):
-    w = m[q]
-    e = w[2]
-    score.append(e)
+    t = dice.count(q)
+    p.append(t)
     q += 1
-print(score)
+if 4 in p or 5 in p:
+    total = sum(p)
+    print(total)
+print(p)
