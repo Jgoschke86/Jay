@@ -491,12 +491,13 @@ while True:
                     print("Please enter valid selection.")
 
 
-        
+        top_btotal.extend(top_bonus)
+        top_btotal.extend(bottom_total)
+        grand_total = sum(top_btotal)
+        print("Game over! Your final score was " + str(grand_total))
 
+        
     else:
-        top_total = sum(top_btotal + top_bonus)
-        grand_total = sum(top_total + bottom_total)
-        print("Game over! Your final score was " + grand_total)
         break
     
 
