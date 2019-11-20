@@ -1,5 +1,4 @@
 from tkinter import *
-import xlrd
 
 
 def about_window():
