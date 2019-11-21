@@ -34,14 +34,14 @@ man_box.grid(row = 0, column = 0, rowspan = 3)
 
 
 go_button = Button(root, text = "GO", font = 16, width = 15, bg = "dark gray")
-go_button.grid(row = 1, column = 1)
+go_button.grid(row = 1, column = 2)
 
 
 info_box_top = Label(root, text = "Login Information")
 info_box = Label(root, textvariable = Labelvar, width = 30, height = 10)
 info_box.config(textvariable = Labelvar)
-info_box_top.grid(row = 0, column = 3)
-info_box.grid(row = 1, column = 3)
+info_box_top.grid(row = 0, column = 4)
+info_box.grid(row = 1, column = 4)
 
     
 
