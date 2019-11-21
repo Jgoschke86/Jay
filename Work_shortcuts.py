@@ -1,24 +1,82 @@
 from tkinter import *
+from selenium import webdriver
+from selenium.webdriver.common.keys import keys
 
+
+driver = webdriver.Chrome()
 
 root = Tk()
 
 root.title("Website Shortcuts")
 
 
-
+def execute():
+    
 def on_selection(evt):
     selected = man_box.curselection()
     details = man_box.get(selected[0])
     if details == "Briggs":
-        print("yes")
         Labelvar.set("""Briggs and Stratton
         www.brigssandstratton.com
         Username = blak black
         password = lfdkjngvlkdsfng""")
+    elif details == "Exmark":
+        Labelvar.set("""Exmark Mowers
+        www.exmark.com
+        Username = blak black
+        password = lfdkjngvlkdsfng""")
+    elif details == "Honda":
+        Labelvar.set("""Honda Power Equipment
+        www.honda.com
+        Username = blak black
+        password = lfdkjngvlkdsfng""")
+    elif details == "Kawasaki":
+        Labelvar.set("""Kawasaki Engines
+        www.kawasaki.com
+        Username = blak black
+        password = lfdkjngvlkdsfng""")
+    elif details == "Kohler":
+        Labelvar.set("""Kohler Engines
+        www.brigssandstratton.com
+        Username = blak black
+        password = lfdkjngvlkdsfng""")
+    elif details == "Scag":
+        Labelvar.set("""Scag Mowers
+        www.scag.com
+        Username = blak black
+        password = lfdkjngvlkdsfng""")
+    elif details == "Schiller":
+        Labelvar.set("""Schiller/Bobcat/Ryan
+        www.schiller.com
+        Username = blak black
+        password = lfdkjngvlkdsfng""")
+    elif details == "Toro":
+        Labelvar.set("""Toro Power Equipment
+        www.toro.com
+        Username = blak black
+        password = lfdkjngvlkdsfng""")
+
+def about_window():
+    top = Toplevel()
+    top.title("About")
+    about_text = Label(top, text = """Created by Justin Goschke
+    v1.0""", font = 15)
+    about_text.pack()
+    back_button = Button(top, text = "Back", command = top.destroy, width = 15, font = 16, bg = "dark gray")
+    back_button.pack()
+    top.mainloop()
+
+
+menu_bar = Menu(root)
+file = Menu(menu_bar, tearoff = 0)
+menu_bar.add_cascade(label = "File", menu = file)
+file.add_command(label = "About", command = about_window)
+file.add_command(label = "Exit", driver.close(), command = root.destroy)
 
 Labelvar = StringVar()
 details = StringVar()
+
+
 
 man_box = Listbox(width = 30)
 man_box.insert(1, "Briggs")
@@ -35,7 +93,7 @@ man_box.grid(row = 0, column = 0, rowspan = 3)
 
 go_button = Button(root, text = "GO", font = 16, width = 15, bg = "dark gray")
 go_button.grid(row = 1, column = 1)
-
+go_button.bind("<Button-1>", execute)
 
 info_box_top = Label(root, text = "Login Information")
 info_box = Label(root, textvariable = Labelvar, width = 30, height = 10)
@@ -45,5 +103,5 @@ info_box.grid(row = 1, column = 3)
 
     
 
-
+root.config(menu = menu_bar)
 root.mainloop()
