@@ -10,13 +10,13 @@ root.title("Website Shortcuts")
 def execute(evt):
     selected = man_box.curselection()
     details = man_box.get(selected[0])
-    driver = webdriver.Chrome(executable_path=r"C:\Users\jgosc\Documents\GitHub\Jay\chromedriver.exe")
+    driver = webdriver.Chrome(executable_path=r"C:\Users\jgoschke\Downloads\chromedriver.exe")
     if details == "Briggs":
         driver.get("https://www.thepowerportal.com/Login.htm")
         name_input = driver.find_element_by_xpath("//*[@id=\"usernameloginBlock1\"]")
-        name_input.send_keys("Justin")
+        name_input.send_keys("117690")
         pass_input = driver.find_element_by_xpath("//*[@id=\"passwordloginBlock1\"]")
-        pass_input.send_keys("blah")
+        pass_input.send_keys("briggs")
         login_button = driver.find_element_by_xpath("//*[@id=\"loginSubmitloginBlock1\"]").click()
         
 def on_selection(evt):
@@ -25,8 +25,8 @@ def on_selection(evt):
     if details == "Briggs":
         Labelvar.set("""Briggs and Stratton
         https://www.thepowerportal.com/Login.htm
-        Username = blak black
-        password = lfdkjngvlkdsfng""")
+        Username = 117690
+        password = briggs""")
     elif details == "Exmark":
         Labelvar.set("""Exmark Mowers
         www.exmark.com
