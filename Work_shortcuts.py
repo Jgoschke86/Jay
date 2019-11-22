@@ -1,23 +1,30 @@
 from tkinter import *
 from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
 
-
-
-driver = webdriver.Chrome()
 
 root = Tk()
 
 root.title("Website Shortcuts")
 
-
-def execute():
-    pass
+def execute(evt):
+    selected = man_box.curselection()
+    details = man_box.get(selected[0])
+    driver = webdriver.Chrome(executable_path=r"C:\Users\jgosc\Documents\GitHub\Jay\chromedriver.exe")
+    if details == "Briggs":
+        driver.get("https://www.thepowerportal.com/Login.htm")
+        name_input = driver.find_element_by_xpath("//*[@id=\"usernameloginBlock1\"]")
+        name_input.send_keys("Justin")
+        pass_input = driver.find_element_by_xpath("//*[@id=\"passwordloginBlock1\"]")
+        pass_input.send_keys("blah")
+        login_button = driver.find_element_by_xpath("//*[@id=\"loginSubmitloginBlock1\"]").click()
+        
 def on_selection(evt):
     selected = man_box.curselection()
     details = man_box.get(selected[0])
     if details == "Briggs":
         Labelvar.set("""Briggs and Stratton
-        www.brigssandstratton.com
+        https://www.thepowerportal.com/Login.htm
         Username = blak black
         password = lfdkjngvlkdsfng""")
     elif details == "Exmark":
@@ -71,7 +78,7 @@ menu_bar = Menu(root)
 file = Menu(menu_bar, tearoff = 0)
 menu_bar.add_cascade(label = "File", menu = file)
 file.add_command(label = "About", command = about_window)
-file.add_command(driver.close(),label = "Exit", command = root.destroy)
+file.add_command(command = root.destroy, label = "Exit")
 
 Labelvar = StringVar()
 details = StringVar()
@@ -96,12 +103,11 @@ go_button.grid(row = 1, column = 1)
 go_button.bind("<Button-1>", execute)
 
 info_box_top = Label(root, text = "Login Information")
-info_box = Label(root, textvariable = Labelvar, width = 30, height = 10)
+info_box = Label(root, textvariable = Labelvar, width = 45, height = 10)
 info_box.config(textvariable = Labelvar)
 info_box_top.grid(row = 0, column = 4)
 info_box.grid(row = 1, column = 4)
 
-    
 
 root.config(menu = menu_bar)
 root.mainloop()
