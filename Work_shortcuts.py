@@ -3,7 +3,7 @@ from selenium import webdriver
 
 
 
-driver = webdriver.Chrome("\\lenny\Columbus Users$\jgoschke\My Documents\GitHub\Jay\chromedriver.exe")
+driver = webdriver.Chrome()
 
 root = Tk()
 
