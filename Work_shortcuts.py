@@ -7,6 +7,14 @@ root = Tk()
 
 root.title("Website Shortcuts")
 
+
+Briggs = {"Manufacturer:": "Briggs and Stratton", "Website:": "https://www.thepowerportal.com/Login.htm", "Username:": "117690", "Password:": "briggs"}
+
+
+manufacturers = [Briggs]
+
+
+
 def execute(evt):
     selected = man_box.curselection()
     details = man_box.get(selected[0])
@@ -22,46 +30,51 @@ def execute(evt):
 def on_selection(evt):
     selected = man_box.curselection()
     details = man_box.get(selected[0])
-    if details == "Briggs":
-        Labelvar.set("""Briggs and Stratton
-        https://www.thepowerportal.com/Login.htm
-        Username = 117690
-        password = briggs""")
-    elif details == "Exmark":
-        Labelvar.set("""Exmark Mowers
-        www.exmark.com
-        Username = blak black
-        password = lfdkjngvlkdsfng""")
-    elif details == "Honda":
-        Labelvar.set("""Honda Power Equipment
-        www.honda.com
-        Username = blak black
-        password = lfdkjngvlkdsfng""")
-    elif details == "Kawasaki":
-        Labelvar.set("""Kawasaki Engines
-        www.kawasaki.com
-        Username = blak black
-        password = lfdkjngvlkdsfng""")
-    elif details == "Kohler":
-        Labelvar.set("""Kohler Engines
-        www.brigssandstratton.com
-        Username = blak black
-        password = lfdkjngvlkdsfng""")
-    elif details == "Scag":
-        Labelvar.set("""Scag Mowers
-        www.scag.com
-        Username = blak black
-        password = lfdkjngvlkdsfng""")
-    elif details == "Schiller":
-        Labelvar.set("""Schiller/Bobcat/Ryan
-        www.schiller.com
-        Username = blak black
-        password = lfdkjngvlkdsfng""")
-    elif details == "Toro":
-        Labelvar.set("""Toro Power Equipment
-        www.toro.com
-        Username = blak black
-        password = lfdkjngvlkdsfng""")
+    manu_info = manufacturers[selected[0]]
+    print(selected)
+    print(details)
+    Labelvar.set(manu_info.items())
+        
+    # elif details == "Exmark":
+    #     Labelvar.set("""Exmark Mowers
+    #     https://www.exmark.com/
+    #     Username = 320163
+    #     Password = MJBwz54-""")
+    # elif details == "Honda":
+    #     Labelvar.set("""Honda Power Equipment
+    #     http://www.in.honda.com/
+    #     Username = bps
+    #     Password = Buckeyebps23""")
+    # elif details == "Kawasaki":
+    #     Labelvar.set("""Kawasaki Engines
+    #     www.kawasaki.com
+    #     Username = blak black
+    #     Password = lfdkjngvlkdsfng""")
+    # elif details == "Kohler":
+    #     Labelvar.set("""Kohler Engines
+    #     www.brigssandstratton.com
+    #     Username = blak black
+    #     Password = lfdkjngvlkdsfng""")
+    # elif details == "Scag":
+    #     Labelvar.set("""Scag Mowers
+    #     www.scag.com
+    #     Username = blak black
+    #     Password = lfdkjngvlkdsfng""")
+    # elif details == "Schiller":
+    #     Labelvar.set("""Schiller/Bobcat/Ryan
+    #     www.schiller.com
+    #     Username = blak black
+    #     Password = lfdkjngvlkdsfng""")
+    # elif details == "Stihl":
+    #     Labelvar.set("""Bryan Equipment
+    #     www.bryanequipment.com
+    #     Username = rmorrison@buckeyepowersales.com
+    #     Password = BUCKEYE1""")
+    # elif details == "Toro":
+    #     Labelvar.set("""Toro Power Equipment
+    #     www.toro.com
+    #     Username = blak black
+    #     Password = lfdkjngvlkdsfng""")
 
 def about_window():
     top = Toplevel()
@@ -93,7 +106,8 @@ man_box.insert(4, "Kawasaki")
 man_box.insert(5, "Kohler")
 man_box.insert(6, "Scag")
 man_box.insert(7, "Schiller")
-man_box.insert(8, "Toro")
+man_box.insert(8, "Stihl")
+man_box.insert(9, "Toro")
 man_box.bind("<<ListboxSelect>>", on_selection)
 man_box.grid(row = 0, column = 0, rowspan = 3)
 
