@@ -1,3 +1,5 @@
 {
-    "python.pythonPath": "C:\\Users\\jgosc\\AppData\\Local\\Programs\\Python\\Python38\\python.exe"
+    "python.pythonPath": "C:\\Users\\jgoschke\\AppData\\Local\\Programs\\Python\\Python38-32\\python.exe",
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true
 }

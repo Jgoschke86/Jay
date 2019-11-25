@@ -3,21 +3,28 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
 
+
 root = Tk()
 
 root.title("Website Shortcuts")
 
+var = StringVar()
+Briggs = ["Briggs and Stratton", "https://www.thepowerportal.com/Login.htm", "117690", "briggs"]
+Exmark = ["Exmark", "https://user.exmark.com/login?returnUrl=https://extranet.exmark.com", "320163", "MJBwz54-"]
+Honda = ["Honda", "https://www.in.honda.com/", "bps", "Buckeyebps23"]
+Kawasaki = ["Kawasaki Engines", "www.kawasakipower.com", "rmorrison", "bep0wer2"]
+Kohler = ["Kohler Engines", "https://pswusers.arinet.com/Kohler", "28950002064", "Buckeye1"]
+Scag = ["Scag Mowers", "www.scagtech.com", "338035dlr", "shadow"]
+Schiller = ["Schiller/Ryan/Bobcat", "www.schillergcpro.com", "rmorrison", "reneem"]
+Stihl = ["Stihl", "www.stihleservice.com", "Service", "buckeye"]
+Toro = ["Toro", "http://dealer.thetorocompany.com/", "405214bohlg1", "shadow12"]
 
-Briggs = {"Manufacturer:": "Briggs and Stratton", "Website:": "https://www.thepowerportal.com/Login.htm", "Username:": "117690", "Password:": "briggs"}
-
-
-manufacturers = [Briggs]
-
+manufacturers = [Briggs, Exmark, Honda, Kawasaki, Kohler, Scag, Schiller, Stihl, Toro]
 
 
 def execute(evt):
     selected = man_box.curselection()
-    details = man_box.get(selected[0])
+    details = man_box.get(selected)
     driver = webdriver.Chrome(executable_path=r"C:\Users\jgoschke\Downloads\chromedriver.exe")
     if details == "Briggs":
         driver.get("https://www.thepowerportal.com/Login.htm")
@@ -31,50 +38,10 @@ def on_selection(evt):
     selected = man_box.curselection()
     details = man_box.get(selected[0])
     manu_info = manufacturers[selected[0]]
+    var.set(manu_info[0] + "\n" + manu_info[1] + "\n" + "Username: " + manu_info[2] + "\n" + "Password: " + manu_info[3])
     print(selected)
     print(details)
-    Labelvar.set(manu_info.items())
-        
-    # elif details == "Exmark":
-    #     Labelvar.set("""Exmark Mowers
-    #     https://www.exmark.com/
-    #     Username = 320163
-    #     Password = MJBwz54-""")
-    # elif details == "Honda":
-    #     Labelvar.set("""Honda Power Equipment
-    #     http://www.in.honda.com/
-    #     Username = bps
-    #     Password = Buckeyebps23""")
-    # elif details == "Kawasaki":
-    #     Labelvar.set("""Kawasaki Engines
-    #     www.kawasaki.com
-    #     Username = blak black
-    #     Password = lfdkjngvlkdsfng""")
-    # elif details == "Kohler":
-    #     Labelvar.set("""Kohler Engines
-    #     www.brigssandstratton.com
-    #     Username = blak black
-    #     Password = lfdkjngvlkdsfng""")
-    # elif details == "Scag":
-    #     Labelvar.set("""Scag Mowers
-    #     www.scag.com
-    #     Username = blak black
-    #     Password = lfdkjngvlkdsfng""")
-    # elif details == "Schiller":
-    #     Labelvar.set("""Schiller/Bobcat/Ryan
-    #     www.schiller.com
-    #     Username = blak black
-    #     Password = lfdkjngvlkdsfng""")
-    # elif details == "Stihl":
-    #     Labelvar.set("""Bryan Equipment
-    #     www.bryanequipment.com
-    #     Username = rmorrison@buckeyepowersales.com
-    #     Password = BUCKEYE1""")
-    # elif details == "Toro":
-    #     Labelvar.set("""Toro Power Equipment
-    #     www.toro.com
-    #     Username = blak black
-    #     Password = lfdkjngvlkdsfng""")
+    
 
 def about_window():
     top = Toplevel()
@@ -112,15 +79,20 @@ man_box.bind("<<ListboxSelect>>", on_selection)
 man_box.grid(row = 0, column = 0, rowspan = 3)
 
 
+
 go_button = Button(root, text = "GO", font = 16, width = 15, bg = "dark gray")
 go_button.grid(row = 1, column = 1)
 go_button.bind("<Button-1>", execute)
 
+
 info_box_top = Label(root, text = "Login Information")
-info_box = Label(root, textvariable = Labelvar, width = 45, height = 10)
-info_box.config(textvariable = Labelvar)
+info_box = Label(root, textvariable = var, width = 45, height = 10)
+info_box.config(textvariable = var)
 info_box_top.grid(row = 0, column = 4)
 info_box.grid(row = 1, column = 4)
+
+
+
 
 
 root.config(menu = menu_bar)
