@@ -3,31 +3,55 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import xlrd
 
+#Opens the excel sheet to read it
 intwarr = xlrd.open_workbook(r"C:\Users\jgoschke\Downloads\INTERNET WARRANTY SIGN ONS.xls")
 sheet = intwarr.sheet_by_index(0)
 cell = sheet.cell(0,3)
 
-
-print(cell.value)
+#creates Kinter window
 root = Tk()
 
 root.title("Website Shortcuts")
 
+#Login information extracted from excel sheet
+brg_usr = sheet.cell_value(18,1)
+brg_pass = sheet.cell_value(19,1)
+exm_usr = sheet.cell_value(50,1)
+exm_pass = sheet.cell_value(51,1)
+hon_usr = sheet.cell_value(82,1)
+hon_pass = sheet.cell_value(51,1)
+hon_usr = sheet.cell_value(82,1)
+hon_pass = sheet.cell_value(83,1)
+kaw_usr = sheet.cell_value(103,1)
+kaw_pass = sheet.cell_value(104,1)
+koh_usr = sheet.cell_value(107,1)
+koh_pass = sheet.cell_value(108,1)
+scg_usr = sheet.cell_value(195,1)
+scg_pass = sheet.cell_value(196,1)
+sch_usr = sheet.cell_value(191,1)
+sch_pass = sheet.cell_value(192,1)
+stl_usr = sheet.cell_value(214,1)
+stl_pass = sheet.cell_value(215,1)
+tor_usr = sheet.cell_value(230,1)
+tor_pass = sheet.cell_value(231,1)
+
+
+# Manufacturer information in list form to pull to get used
 var = StringVar()
-Briggs = ["Briggs and Stratton", "https://www.thepowerportal.com/Login.htm", "117690", "briggs"]
-Exmark = ["Exmark", "https://user.exmark.com/login?returnUrl=https://extranet.exmark.com", "320163", "MJBwz54-"]
-Honda = ["Honda", "https://www.in.honda.com/", "bps", "Buckeyebps23"]
-Kawasaki = ["Kawasaki Engines", "www.kawasakipower.com", "rmorrison", "bep0wer2"]
-Kohler = ["Kohler Engines", "https://pswusers.arinet.com/Kohler", "28950002064", "Buckeye1"]
-Scag = ["Scag Mowers", "www.scagtech.com", "338035dlr", "shadow"]
-Schiller = ["Schiller/Ryan/Bobcat", "www.schillergcpro.com", "rmorrison", "reneem"]
-Stihl = ["Stihl", "www.stihleservice.com", "Service", "buckeye"]
-Toro = ["Toro", "http://dealer.thetorocompany.com/", "405214bohlg1", "shadow12"]
+Briggs = ["Briggs and Stratton", "https://www.thepowerportal.com/Login.htm", str(int(brg_usr)), str(brg_pass)]
+Exmark = ["Exmark", "https://user.exmark.com/login?returnUrl=https://extranet.exmark.com", str(int(exm_usr)), str(exm_pass)]
+Honda = ["Honda", "https://www.in.honda.com/", str(hon_usr), str(hon_pass)]
+Kawasaki = ["Kawasaki Engines", "www.kawasakipower.com", str(kaw_usr), str(kaw_pass)]
+Kohler = ["Kohler Engines", "https://pswusers.arinet.com/Kohler", str(int(koh_usr)), str(koh_pass)]
+Scag = ["Scag Mowers", "www.scagtech.com", str(scg_usr), str(scg_pass)]
+Schiller = ["Schiller/Ryan/Bobcat", "www.schillergcpro.com", str(sch_usr), str(sch_pass)]
+Stihl = ["Stihl", "www.stihleservice.com", str(stl_usr), str(stl_pass)]
+Toro = ["Toro", "http://dealer.thetorocompany.com/", str(tor_usr), str(tor_pass)]
 
 
 manufacturers = [Briggs, Exmark, Honda, Kawasaki, Kohler, Scag, Schiller, Stihl, Toro]
 
-
+# What to do when button is pressed
 def execute(evt):
     selected = man_box.curselection()
     details = man_box.get(selected)
@@ -40,7 +64,7 @@ def execute(evt):
         pass_input.send_keys(Briggs[3])
         login_button = driver.find_element_by_xpath("//*[@id=\"loginSubmitloginBlock1\"]").click()
 
-  
+# changes display in info_box based on what is selected for manufacturer
 def on_selection(evt):
     selected = man_box.curselection()
     details = man_box.get(selected[0])
@@ -49,7 +73,7 @@ def on_selection(evt):
     print(selected)
     print(details)
     
-
+# About window in menu
 def about_window():
     top = Toplevel()
     top.title("About")
@@ -60,14 +84,14 @@ def about_window():
     back_button.pack()
     top.mainloop()
 
-
+# Menu Bar details
 menu_bar = Menu(root)
 file = Menu(menu_bar, tearoff = 0)
 menu_bar.add_cascade(label = "File", menu = file)
 file.add_command(label = "About", command = about_window)
 file.add_command(command = root.destroy, label = "Exit")
 
-
+# The selection box details
 Labelvar = StringVar()
 details = StringVar()
 
@@ -85,12 +109,12 @@ man_box.insert(9, "Toro")
 man_box.bind("<<ListboxSelect>>", on_selection)
 man_box.grid(row = 0, column = 0, rowspan = 3)
 
-
+# Execute button
 go_button = Button(root, text = "GO", font = 16, width = 15, bg = "dark gray")
 go_button.grid(row = 1, column = 1)
 go_button.bind("<Button-1>", execute)
 
-
+# Display box for information
 info_box_top = Label(root, text = "Login Information")
 info_box = Label(root, textvariable = var, width = 45, height = 10)
 info_box.config(textvariable = var)
