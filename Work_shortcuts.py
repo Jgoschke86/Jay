@@ -41,11 +41,11 @@ var = StringVar()
 Briggs = ["Briggs and Stratton", "https://www.thepowerportal.com/Login.htm", str(int(brg_usr)), str(brg_pass)]
 Exmark = ["Exmark", "https://user.exmark.com/login?returnUrl=https://extranet.exmark.com", str(int(exm_usr)), str(exm_pass)]
 Honda = ["Honda", "https://www.in.honda.com/", str(hon_usr), str(hon_pass)]
-Kawasaki = ["Kawasaki Engines", "www.kawasakipower.com", str(kaw_usr), str(kaw_pass)]
+Kawasaki = ["Kawasaki Engines", "https://www.kawasakipower.com/", str(kaw_usr), str(kaw_pass)]
 Kohler = ["Kohler Engines", "https://pswusers.arinet.com/Kohler", str(int(koh_usr)), str(koh_pass)]
 Scag = ["Scag Mowers", "www.scagtech.com", str(scg_usr), str(scg_pass)]
-Schiller = ["Schiller/Ryan/Bobcat", "www.schillergcpro.com", str(sch_usr), str(sch_pass)]
-Stihl = ["Stihl", "www.stihleservice.com", str(stl_usr), str(stl_pass)]
+Schiller = ["Schiller/Ryan/Bobcat", "https://www.schillergcpro.com", str(sch_usr), str(sch_pass)]
+Stihl = ["Stihl", "https://www.stihleservice.com", str(stl_usr), str(stl_pass)]
 Toro = ["Toro", "http://dealer.thetorocompany.com/", str(tor_usr), str(tor_pass)]
 
 
@@ -56,6 +56,7 @@ def execute(evt):
     selected = man_box.curselection()
     details = man_box.get(selected)
     driver = webdriver.Chrome(executable_path = r"C:\Users\jgoschke\Downloads\chromedriver.exe")
+    driver.maximize_window()
     if details == "Briggs":
         driver.get(Briggs[1])
         name_input = driver.find_element_by_xpath("//*[@id=\"usernameloginBlock1\"]")
@@ -63,6 +64,34 @@ def execute(evt):
         pass_input = driver.find_element_by_xpath("//*[@id=\"passwordloginBlock1\"]")
         pass_input.send_keys(Briggs[3])
         login_button = driver.find_element_by_xpath("//*[@id=\"loginSubmitloginBlock1\"]").click()
+    if details == "Exmark":
+        driver.get(Exmark[1])
+        name_input = driver.find_element_by_xpath("//*[@id=\"UserName\"]")
+        name_input.send_keys(Exmark[2])
+        pass_input = driver.find_element_by_xpath("//*[@id=\"Password\"]")
+        pass_input.send_keys(Exmark[3])
+        login_button = driver.find_element_by_xpath("//*[@id=\"form0\"]/div/div/div[3]/div/p/input").click()
+    # elif details == "Honda":
+    #     driver.get(Honda[1])
+    #     name_input = pass
+    #     name_input.send_keys(Honda[2])
+    #     pass_input = pass
+    #     pass_input.send_keys(Honda[3])
+    elif details == "Kawasaki":
+        driver.get(Kawasaki[1])
+        name_input = driver.find_element_by_xpath("//*[@id=\"W_USERNAME\"]")
+        name_input.send_keys(Kawasaki[2])
+        pass_input = driver.find_element_by_xpath("//*[@id=\"LW3USRPAS\"]")
+        pass_input.send_keys(Kawasaki[3])
+        login_button = driver.find_element_by_xpath("//*[@id=\"Login\"]").click()
+    elif details == "Scag":
+        driver.get(Scag[1])
+        name_input = driver.find_element_by_xpath("//*[@id=\"txtUserName\"]")
+        name_input.send_keys(Scag[2])
+        pass_input = driver.find_element_by_xpath("//*[@id=\"txtUserPass\"]")
+        pass_input.send_keys(Scag[3])
+        login_button = driver.find_element_by_xpath("//*[@id=\"Button1\"]").click()
+
 
 # changes display in info_box based on what is selected for manufacturer
 def on_selection(evt):
