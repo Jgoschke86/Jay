@@ -3,7 +3,12 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import xlrd
 
+intwarr = xlrd.open_workbook(r"C:\Users\jgoschke\Downloads\INTERNET WARRANTY SIGN ONS.xls")
+sheet = intwarr.sheet_by_index(0)
+cell = sheet.cell(0,3)
 
+
+print(cell.value)
 root = Tk()
 
 root.title("Website Shortcuts")
@@ -28,7 +33,7 @@ def execute(evt):
     details = man_box.get(selected)
     driver = webdriver.Chrome(executable_path = r"C:\Users\jgoschke\Downloads\chromedriver.exe")
     if details == "Briggs":
-        driver.get("https://www.thepowerportal.com/Login.htm")
+        driver.get(Briggs[1])
         name_input = driver.find_element_by_xpath("//*[@id=\"usernameloginBlock1\"]")
         name_input.send_keys(Briggs[2])
         pass_input = driver.find_element_by_xpath("//*[@id=\"passwordloginBlock1\"]")
