@@ -124,8 +124,7 @@ def on_selection(evt):
     details = man_box.get(selected[0])
     manu_info = manufacturers[selected[0]]
     var.set(manu_info[0] + "\n" + manu_info[1] + "\n" + "Username: " + manu_info[2] + "\n" + "Password: " + manu_info[3])
-    print(selected)
-    print(details)
+
     
 # About window in menu
 def about_window():
@@ -150,7 +149,7 @@ Labelvar = StringVar()
 details = StringVar()
 
 
-man_box = Listbox(width = 30)
+man_box = Listbox(width = 15, border = 2)
 man_box.insert(1, "Briggs")
 man_box.insert(2, "Exmark")
 man_box.insert(3, "Honda")
@@ -161,7 +160,7 @@ man_box.insert(7, "Schiller")
 man_box.insert(8, "Stihl")
 man_box.insert(9, "Toro")
 man_box.bind("<<ListboxSelect>>", on_selection)
-man_box.grid(row = 0, column = 0, rowspan = 3)
+man_box.grid(row = 1, column = 0, rowspan = 3)
 
 # Execute button
 go_button = Button(root, text = "GO", font = 16, width = 15, bg = "dark gray")
@@ -170,7 +169,7 @@ go_button.bind("<Button-1>", execute)
 
 # Display box for information
 info_box_top = Label(root, text = "Login Information")
-info_box = Label(root, textvariable = var, width = 45, height = 10)
+info_box = Label(root, textvariable = var, width = 45, height = 10, relief = SUNKEN, border = 2, bg = "white")
 info_box.config(textvariable = var)
 info_box_top.grid(row = 0, column = 4)
 info_box.grid(row = 1, column = 4)
