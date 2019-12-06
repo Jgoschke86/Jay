@@ -169,7 +169,7 @@ go_button.bind("<Button-1>", execute)
 
 # Display box for information
 info_box_top = Label(root, text = "Login Information")
-info_box = Label(root, textvariable = var, width = 45, height = 10, relief = SUNKEN, border = 2, bg = "white")
+info_box = Label(root, width = 45, height = 10, relief = SUNKEN, border = 2, bg = "white")
 info_box.config(textvariable = var)
 info_box_top.grid(row = 0, column = 4)
 info_box.grid(row = 1, column = 4)
