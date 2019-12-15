@@ -1,5 +1,5 @@
 from tkinter import *
-import random
+from random import choice
 
 
 # ♠♣♥♦
@@ -19,9 +19,9 @@ root.configure(bg = "green")
 
 
 if pturn == 0:
-    pcard[0] = str(random.choice(value)) + "\n" + random.choice(suit)
-    pcard[1] = str(random.choice(value)) + "\n" + random.choice(suit)
-    ccard[0] = str(random.choice(value)) + "\n" + random.choice(suit)
+    pcard[0] = str(choice(value)) + "\n" + choice(suit)
+    pcard[1] = str(choice(value)) + "\n" + choice(suit)
+    ccard[0] = str(choice(value)) + "\n" + choice(suit)
     pturn += 1
 
 
