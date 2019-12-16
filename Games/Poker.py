@@ -1,5 +1,5 @@
 from tkinter import *
-import random
+from random import choice
 
 
 # ♠♣♥♦
