@@ -13,18 +13,25 @@ pturn = 0
 cturn = 0
 
 
+
+def card_hit():
+    pcard[2] = str(random.choice(value)) + "\n" + random.choice(suit)
+
+
+
 root = Tk()
 root.title("Black Jack")
 root.configure(bg = "green")
 
 
+Labelvar = StringVar()
+
 if pturn == 0:
-    pcard[0] = str(random.choice(value)) + "\n" + random.choice(suit)
-    pcard[1] = str(random.choice(value)) + "\n" + random.choice(suit)
-    ccard[0] = str(random.choice(value)) + "\n" + random.choice(suit)
+    pcard[pturn] = str(random.choice(value)) + "\n" + random.choice(suit)
+    ccard[pturn] = str(random.choice(value)) + "\n" + random.choice(suit)
     pturn += 1
 
-
+print(pturn)
 p1 = StringVar()
 p2 = StringVar()
 p3 = StringVar()
@@ -52,12 +59,12 @@ c5.set(ccard[4])
 c6.set(ccard[5])
 
 #   Player cards
-p_card1 = Label(textvariable = p1, width = 3, height = 2, relief = SUNKEN, bg = "white")
-p_card2 = Label(textvariable = p2, width = 3, height = 2, relief = SUNKEN, bg = "white")
-p_card3 = Label(textvariable = p3, width = 3, height = 2, relief = SUNKEN, bg = "white")
-p_card4 = Label(textvariable = p4, width = 3, height = 2, relief = SUNKEN, bg = "white")
-p_card5 = Label(textvariable = p5, width = 3, height = 2, relief = SUNKEN, bg = "white")
-p_card6 = Label(textvariable = p6, width = 3, height = 2, relief = SUNKEN, bg = "white")
+p_card1 = Label(width = 3, height = 2, relief = SUNKEN, bg = "white")
+p_card2 = Label(width = 3, height = 2, relief = SUNKEN, bg = "white")
+p_card3 = Label(width = 3, height = 2, relief = SUNKEN, bg = "white")
+p_card4 = Label(width = 3, height = 2, relief = SUNKEN, bg = "white")
+p_card5 = Label(width = 3, height = 2, relief = SUNKEN, bg = "white")
+p_card6 = Label(width = 3, height = 2, relief = SUNKEN, bg = "white")
 #   Computer cards
 c_card1 = Label(textvariable = c1, width = 3, height = 2, relief = SUNKEN, bg = "white")
 c_card2 = Label(textvariable = c2, width = 3, height = 2, relief = SUNKEN, bg = "white")
@@ -69,12 +76,12 @@ c_card6 = Label(textvariable = c6, width = 3, height = 2, relief = SUNKEN, bg = 
 
 
 #   Card font
-p_card1.config(font=("Courier", 44))
-p_card2.config(font=("Courier", 44))
-p_card3.config(font=("Courier", 44))
-p_card4.config(font=("Courier", 44))
-p_card5.config(font=("Courier", 44))
-p_card6.config(font=("Courier", 44))
+p_card1.config(textvariable = p1, font=("Courier", 44))
+p_card2.config(textvariable = p2, font=("Courier", 44))
+p_card3.config(textvariable = p3, font=("Courier", 44))
+p_card4.config(textvariable = p4, font=("Courier", 44))
+p_card5.config(textvariable = p5, font=("Courier", 44))
+p_card6.config(textvariable = p6, font=("Courier", 44))
 c_card1.config(font=("Courier", 44))
 c_card2.config(font=("Courier", 44))
 c_card3.config(font=("Courier", 44))
@@ -98,9 +105,10 @@ c_card6.grid(row = 1, column = 7)
 
 #   Bottom buttons
 new = Button(text = "New Game", width = 12)
-hit = Button(text = "Hit", width = 12)
+hit = Button(width = 12)
 stay = Button(text = "Stay", width = 12)
 over = Button(text = "Quit", width = 12, command = root.destroy)
+hit.config(command = card_hit, text = "Hit")
 new.grid(row = 5, column = 3)
 hit.grid(row = 5, column = 4)
 stay.grid(row = 5, column = 5)
