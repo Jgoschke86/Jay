@@ -9,6 +9,7 @@ intwarr = xlrd.open_workbook(r"S:\OPE\OPE Service\INTERNET WARRANTY SIGN ONS.xls
 sheet = intwarr.sheet_by_index(0)
 cell = sheet.cell(0,3)
 
+
 #creates Kinter window
 root = Tk()
 
