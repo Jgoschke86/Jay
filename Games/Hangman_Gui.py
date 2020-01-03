@@ -1,5 +1,5 @@
 from tkinter import *
-
+from PIL import Image, ImageTk
 
 
 root = Tk()
@@ -7,20 +7,21 @@ root.title("Hangman")
 root.config(bg = "blue")
 
 
-def selected():
-    bg = "gray"
+guess0 = Image.open(file = r"C:\Users\jgoschke\Downloads\man0.gif")
+man0 = ImageTk.PhotoImage(guess0)
+
 dash_word = StringVar()
 man_shape = StringVar()
 
 dash_word.set("Test")
-man_shape.set("test2")
+man_shape.set(man0)
 
 
 word_box = Label(root, textvariable = dash_word, width = 30, height = 2)
 word_box.config(font = 20, relief = SUNKEN)
 word_box.grid(row = 1, column = 2, columnspan = 9)
 
-a = Button(text = "A", width = 3, font = "bold", command = selected).grid(row = 3, column = 1)
+a = Button(text = "A", width = 3, font = "bold").grid(row = 3, column = 1)
 b = Button(text = "B", width = 3, font = "bold").grid(row = 3, column = 2)
 c = Button(text = "C", width = 3, font = "bold").grid(row = 3, column = 3)
 d = Button(text = "D", width = 3, font = "bold").grid(row = 3, column = 4)
@@ -47,8 +48,8 @@ x = Button(text = "X", width = 3, font = "bold").grid(row = 6, column = 6)
 y = Button(text = "Y", width = 3, font = "bold").grid(row = 7, column = 3)
 z = Button(text = "Z", width = 3, font = "bold").grid(row = 7, column = 4)
 
-man_box = Label(root, textvariable = man_shape, width = 15, height = 8, relief = SUNKEN)
-man_box.config(font = 20)
+man_box = Label(root, image = man0, width = 15, height = 8, relief = SUNKEN)
+man_box.image = man0
 man_box.grid(row = 3, column = 8, rowspan = 4, columnspan = 4)
 
 # Top row
