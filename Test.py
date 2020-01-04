@@ -1,7 +1,6 @@
-from random import randint
+import random
 
-word_list = open(file = r"C:\Users\jgosc\Documents\GitHub\Jay\Games\Hangman\word_list.txt")
-secret_word = word_list.readlines(20)
+# word_list = open(r"C:\Users\jgosc\Documents\GitHub\Jay\Games\Hangman\word_list.txt")
+secret_word = random.choice(open(r"C:\Users\jgosc\Documents\GitHub\Jay\Games\Hangman\word_list.txt").readlines())
 
 print(secret_word)
-word_list.close()

@@ -1,5 +1,5 @@
 from tkinter import *
-from random import randint
+import random
 
 
 
@@ -8,9 +8,8 @@ root.title("Hangman")
 root.config(bg = "blue")
 secret_word = ""
 def pick_word():
-    word_list = open(r"C:\Users\jgosc\Downloads\word_list.txt")
-    secret_word = word_list.readline(randint(1,215))
-    word_list.close()
+    secret_word = random.choice(open(r"C:\Users\jgosc\Documents\GitHub\Jay\Games\Hangman\word_list.txt").readlines())
+    dash_word.set(secret_word)
 
 menu_bar = Menu(root)
 file = Menu(menu_bar, tearoff = 0)
@@ -23,13 +22,13 @@ file.add_command(command = root.destroy, label = "Exit")
 dash_word = StringVar()
 man_shape = StringVar()
 
-dash_word.set(secret_word)
+
 man_shape.set("test")
 
 
 
-word_box = Label(root, textvariable = dash_word, width = 30, height = 2)
-word_box.config(font = 20, relief = SUNKEN)
+word_box = Label(root, textvariable = dash_word, width = 30, height = 2, font=("bold", 13), relief = SUNKEN)
+word_box.config()
 word_box.grid(row = 1, column = 2, columnspan = 9)
 
 a = Button(text = "A", width = 3, font = "bold").grid(row = 3, column = 1)
@@ -63,19 +62,19 @@ man_box = Label(root, width = 20, height = 10, relief = SUNKEN)
 man_box.grid(row = 3, column = 8, rowspan = 4, columnspan = 4)
 
 # Top row
-blankbox1 = Label(root, height = 2, bg = "blue")
+blankbox1 = Label(root, height = 2, bg = "green")
 blankbox1.grid(row = 0, column = 0, columnspan = 4)
 # Left side column
-blankbox2 = Label(root, width = 2, bg = "blue")
+blankbox2 = Label(root, width = 2, bg = "pink")
 blankbox2.grid(row = 1, column = 0, rowspan = 7)
 # Center column
-blankbox3 = Label(root, width = 2, bg = "blue")
+blankbox3 = Label(root, width = 2, bg = "red")
 blankbox3.grid(row = 2, column = 7, rowspan = 2)
 # Right side column
-blankbox4 = Label(root, width = 2, bg = "blue")
+blankbox4 = Label(root, width = 2, bg = "orange")
 blankbox4.grid(row = 1, column = 13, rowspan = 7)
 # Word and box spacer, row 3 spacer
-blankbox5 = Label(root, height = 2, bg = "blue")
+blankbox5 = Label(root, height = 2, bg = "yellow")
 blankbox5.grid(row = 2, column = 1, columnspan = 6)
 # Bottom row
 blankbox6 = Label(root, height = 2, bg = "blue")
