@@ -138,6 +138,8 @@ def about_window():
     back_button.pack()
     top.mainloop()
 
+
+
 # Menu Bar details
 menu_bar = Menu(root)
 file = Menu(menu_bar, tearoff = 0)
