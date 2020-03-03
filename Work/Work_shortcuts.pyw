@@ -1,8 +1,8 @@
 from tkinter import *
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-import xlrd
-import time
+import xlrd, time, os
+
 
 #Opens the excel sheet to read it
 intwarr = xlrd.open_workbook(r"S:\OPE\OPE Service\INTERNET WARRANTY SIGN ONS.xls")
@@ -119,6 +119,7 @@ def execute(evt):
         pass_input = driver.find_element_by_xpath("//*[@id=\"password\"]")
         pass_input.send_keys(Toro[3])
         login_button = driver.find_element_by_xpath("/html/body/div/div[2]/div/form/div[6]/a").click()
+    os.system("taskkill /im chromedriver.exe")
 # changes display in info_box based on what is selected for manufacturer
 def on_selection(evt):
     selected = man_box.curselection()
