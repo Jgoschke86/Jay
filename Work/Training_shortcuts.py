@@ -3,8 +3,11 @@ import xlrd, time, os
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
-trin = xlrd.open_workbook(r"S:\OPE\Justin\Training info.xlsx")
+trin = xlrd.open_workbook(r"C:\Users\jgosc\Documents\GitHub\Jay\Work\Training Info.xlsx")
 sheet = trin.sheet_by_index(0)
+manufacturers = ["Briggs", "Exmark", "Honda", "Kawasaki", "Kohler", "Kubota", "MTD", "Scag", "Stihl", "Toro"]
+manufacturers.sort()
+num = 1
 
 
 root = Tk()
@@ -12,16 +15,16 @@ root.title("Training Logins")
 
 
 def execute(evt):
+    man_name = man_box.get(man_box.curselection())
     for i in range(sheet.nrows):
-        if sheet.cell_value(i,0) == "Honda":
+        if sheet.cell_value(i,0) == man_name:
             username = sheet.cell_value(i,1)
             password = sheet.cell_value(i,2)
+            website = sheet.cell_value(i,3)
         else:
             pass
+    print(username, password)
     
-
-
-
 
 # About window in menu
 def about_window():
@@ -36,21 +39,15 @@ def about_window():
 
 
 man_box = Listbox(width = 15, border = 2)
-man_box.insert(1, "Briggs")
-man_box.insert(2, "Exmark")
-man_box.insert(3, "Honda")
-man_box.insert(4, "Kawasaki")
-man_box.insert(5, "Kohler")
-man_box.insert(6, "Kubota")
-man_box.insert(7, "MTD")
-man_box.insert(8, "Scag")
-man_box.insert(9, "Stihl")
-man_box.insert(10, "Toro")
+for name in manufacturers:
+    man_box.insert(num, name)
+    num += 1
 man_box.bind("<<listboxSelect>>")
 man_box.grid(row = 1, column = 0, rowspan = 3)
 
 
-go_button = Button(text = "Go", font = 16, width = 15, bg = "dark gray").grid(row = 1, column = 1)
+go_button = Button(text = "Go", font = 16, width = 15, bg = "dark gray")
+go_button.grid(row = 1, column = 1)
 go_button.bind("<Button-1>", execute)
 
 
