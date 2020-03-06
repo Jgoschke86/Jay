@@ -39,7 +39,7 @@ tor_pass = sheet.cell_value(231,1)
 
 
 # Manufacturer information in list form to pull to get used
-var = StringVar()
+var = tk.StringVar()
 Briggs = ["Briggs and Stratton", "https://www.thepowerportal.com/Login.htm", str(int(brg_usr)), str(brg_pass)]
 Exmark = ["Exmark", "https://user.exmark.com/login?returnUrl=https://extranet.exmark.com", str(int(exm_usr)), str(exm_pass)]
 Honda = ["Honda", "https://www.in.honda.com/", str(hon_usr), str(hon_pass), "310577"]
@@ -51,7 +51,7 @@ Stihl = ["Stihl", "https://dealers.stihlusa.com/Account", str(stl_usr), str(stl_
 Toro = ["Toro", "http://dealer.thetorocompany.com/", str(tor_usr), str(tor_pass)]
 
 
-manufacturers = [Briggs, Exmark, Honda, Kawasaki, Kohler, Scag, Schiller, Stihl, Toro]
+manufacturers = ["Briggs", "Exmark", "Honda", "Kawasaki", "Kohler", "Scag", "Schiller", "Stihl", "Toro"]
 manufacturers.sort()
 
 # What to do when button is pressed
@@ -125,9 +125,9 @@ def execute(evt):
 def on_selection(evt):
     selected = man_box.curselection()
     details = man_box.get(selected[0])
-    manu_info = manufacturers[selected[0]]
+    manu_info = selected[0]
     var.set(manu_info[0] + "\n" + manu_info[1] + "\n" + "Username: " + manu_info[2] + "\n" + "Password: " + manu_info[3])
-
+    print(selected)
     
 # About window in menu
 def about_window():
@@ -150,12 +150,12 @@ file.add_command(label = "About", command = about_window)
 file.add_command(command = root.destroy, label = "Exit")
 
 # The selection box details
-Labelvar = StringVar()
-details = StringVar()
+Labelvar = tk.StringVar()
+details = tk.StringVar()
 
 
 man_box = tk.Listbox(width = 15, border = 2)
-for name in str(manufacturers):
+for name in manufacturers:
     man_box.insert(num, name)
     num += 1
 man_box.bind("<<ListboxSelect>>", on_selection)
@@ -168,7 +168,7 @@ go_button.bind("<Button-1>", execute)
 
 # Display box for information
 info_box_top = tk.Label(root, text = "Login Information")
-info_box = tk.Label(root, width = 45, height = 10, relief = SUNKEN, border = 2, bg = "white")
+info_box = tk.Label(root, width = 45, height = 10, relief = tk.SUNKEN, border = 2, bg = "white")
 info_box.config(textvariable = var)
 info_box_top.grid(row = 0, column = 4)
 info_box.grid(row = 1, column = 4)
