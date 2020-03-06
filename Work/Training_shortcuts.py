@@ -1,4 +1,4 @@
-from tkinter import *
+import tkinter as tk
 import xlrd, time, os
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -10,7 +10,7 @@ manufacturers.sort()
 num = 1
 
 
-root = Tk()
+root = tk.Tk()
 root.title("Training Logins")
 
 
@@ -28,17 +28,17 @@ def execute(evt):
 
 # About window in menu
 def about_window():
-    top = Toplevel()
+    top = tk.Toplevel()
     top.title("About")
-    about_text = Label(top, text = """Created by Justin Goschke
+    about_text = tk.Label(top, text = """Created by Justin Goschke
     v1.0""", font = 15)
     about_text.pack()
-    back_button = Button(top, text = "Back", command = top.destroy, width = 15, font = 16, bg = "dark gray")
+    back_button = tk.Button(top, text = "Back", command = top.destroy, width = 15, font = 16, bg = "dark gray")
     back_button.pack()
     top.mainloop()
 
 
-man_box = Listbox(width = 15, border = 2)
+man_box = tk.Listbox(width = 15, border = 2)
 for name in manufacturers:
     man_box.insert(num, name)
     num += 1
@@ -46,14 +46,14 @@ man_box.bind("<<listboxSelect>>")
 man_box.grid(row = 1, column = 0, rowspan = 3)
 
 
-go_button = Button(text = "Go", font = 16, width = 15, bg = "dark gray")
+go_button = tk.Button(text = "Go", font = 16, width = 15, bg = "dark gray")
 go_button.grid(row = 1, column = 1)
 go_button.bind("<Button-1>", execute)
 
 
 # Menu Bar details
-menu_bar = Menu(root)
-file = Menu(menu_bar, tearoff = 0)
+menu_bar = tk.Menu(root)
+file = tk.Menu(menu_bar, tearoff = 0)
 menu_bar.add_cascade(label = "File", menu = file)
 file.add_command(label = "About", command = about_window)
 file.add_command(command = root.destroy, label = "Exit")

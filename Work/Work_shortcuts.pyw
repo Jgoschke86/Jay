@@ -1,4 +1,4 @@
-from tkinter import *
+import tkinter as tk
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import xlrd, time, os
@@ -8,10 +8,10 @@ import xlrd, time, os
 intwarr = xlrd.open_workbook(r"S:\OPE\OPE Service\INTERNET WARRANTY SIGN ONS.xls")
 sheet = intwarr.sheet_by_index(0)
 cell = sheet.cell(0,3)
-
+num = 1
 
 #creates Kinter window
-root = Tk()
+root = tk.Tk()
 
 root.title("Website Shortcuts")
 
@@ -52,6 +52,7 @@ Toro = ["Toro", "http://dealer.thetorocompany.com/", str(tor_usr), str(tor_pass)
 
 
 manufacturers = [Briggs, Exmark, Honda, Kawasaki, Kohler, Scag, Schiller, Stihl, Toro]
+manufacturers.sort()
 
 # What to do when button is pressed
 def execute(evt):
@@ -130,20 +131,20 @@ def on_selection(evt):
     
 # About window in menu
 def about_window():
-    top = Toplevel()
+    top = tk.Toplevel()
     top.title("About")
-    about_text = Label(top, text = """Created by Justin Goschke
+    about_text = tk.Label(top, text = """Created by Justin Goschke
     v1.0""", font = 15)
     about_text.pack()
-    back_button = Button(top, text = "Back", command = top.destroy, width = 15, font = 16, bg = "dark gray")
+    back_button = tk.Button(top, text = "Back", command = top.destroy, width = 15, font = 16, bg = "dark gray")
     back_button.pack()
     top.mainloop()
 
 
 
 # Menu Bar details
-menu_bar = Menu(root)
-file = Menu(menu_bar, tearoff = 0)
+menu_bar = tk.Menu(root)
+file = tk.Menu(menu_bar, tearoff = 0)
 menu_bar.add_cascade(label = "File", menu = file)
 file.add_command(label = "About", command = about_window)
 file.add_command(command = root.destroy, label = "Exit")
@@ -153,27 +154,21 @@ Labelvar = StringVar()
 details = StringVar()
 
 
-man_box = Listbox(width = 15, border = 2)
-man_box.insert(1, "Briggs")
-man_box.insert(2, "Exmark")
-man_box.insert(3, "Honda")
-man_box.insert(4, "Kawasaki")
-man_box.insert(5, "Kohler")
-man_box.insert(6, "Scag")
-man_box.insert(7, "Schiller")
-man_box.insert(8, "Stihl")
-man_box.insert(9, "Toro")
+man_box = tk.Listbox(width = 15, border = 2)
+for name in str(manufacturers):
+    man_box.insert(num, name)
+    num += 1
 man_box.bind("<<ListboxSelect>>", on_selection)
 man_box.grid(row = 1, column = 0, rowspan = 3)
 
 # Execute button
-go_button = Button(root, text = "GO", font = 16, width = 15, bg = "dark gray")
+go_button = tk.Button(root, text = "GO", font = 16, width = 15, bg = "dark gray")
 go_button.grid(row = 1, column = 1)
 go_button.bind("<Button-1>", execute)
 
 # Display box for information
-info_box_top = Label(root, text = "Login Information")
-info_box = Label(root, width = 45, height = 10, relief = SUNKEN, border = 2, bg = "white")
+info_box_top = tk.Label(root, text = "Login Information")
+info_box = tk.Label(root, width = 45, height = 10, relief = SUNKEN, border = 2, bg = "white")
 info_box.config(textvariable = var)
 info_box_top.grid(row = 0, column = 4)
 info_box.grid(row = 1, column = 4)
