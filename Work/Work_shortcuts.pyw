@@ -51,16 +51,16 @@ Stihl = ["Stihl", "https://dealers.stihlusa.com/Account", str(stl_usr), str(stl_
 Toro = ["Toro", "http://dealer.thetorocompany.com/", str(tor_usr), str(tor_pass)]
 
 
-manufacturers = ["Briggs", "Exmark", "Honda", "Kawasaki", "Kohler", "Scag", "Schiller", "Stihl", "Toro"]
+manufacturers = [Briggs, Exmark, Honda, Kawasaki, Kohler, Scag, Schiller, Stihl, Toro]
 manufacturers.sort()
 
 # What to do when button is pressed
 def execute(evt):
     selected = man_box.curselection()
-    details = man_box.get(selected)
+    details = man_box.get(selected[0])
     driver = webdriver.Chrome(executable_path = r"C:\Users\jgoschke\Downloads\chromedriver.exe")
     driver.maximize_window()
-    if details == "Briggs":
+    if details == "Briggs and Stratton":
         driver.get(Briggs[1])
         name_input = driver.find_element_by_xpath("//*[@id=\"usernameloginBlock1\"]")
         name_input.send_keys(Briggs[2])
@@ -83,23 +83,23 @@ def execute(evt):
         pass_input = driver.find_element_by_xpath("//*[@id=\"txtPassword\"]")
         pass_input.send_keys(Honda[3])
         login_button = driver.find_element_by_xpath("//*[@id=\"btnLogon\"]").click()
-    elif details == "Kawasaki":
+    elif details == "Kawasaki Engines":
         driver.get(Kawasaki[1])
         name_input = driver.find_element_by_xpath("//*[@id=\"W_USERNAME\"]")
         name_input.send_keys(Kawasaki[2])
         pass_input = driver.find_element_by_xpath("//*[@id=\"LW3USRPAS\"]")
         pass_input.send_keys(Kawasaki[3])
         login_button = driver.find_element_by_xpath("//*[@id=\"Login\"]").click()
-    elif details == "Kohler":
+    elif details == "Kohler Engines":
         driver.get(Kohler[1])
-    elif details == "Scag":
+    elif details == "Scag Mowers":
         driver.get(Scag[1])
         name_input = driver.find_element_by_xpath("//*[@id=\"txtUserName\"]")
         name_input.send_keys(Scag[2])
         pass_input = driver.find_element_by_xpath("//*[@id=\"txtUserPass\"]")
         pass_input.send_keys(Scag[3])
         login_button = driver.find_element_by_xpath("//*[@id=\"Button1\"]").click()
-    elif details == "Schiller":
+    elif details == "Schiller/Ryan/Bobcat":
         driver.get(Schiller[1])
         name_input = driver.find_element_by_xpath("//*[@id=\"sgcuser\"]")
         name_input.send_keys(Schiller[2])
@@ -120,14 +120,14 @@ def execute(evt):
         pass_input = driver.find_element_by_xpath("//*[@id=\"password\"]")
         pass_input.send_keys(Toro[3])
         login_button = driver.find_element_by_xpath("/html/body/div/div[2]/div/form/div[6]/a").click()
-    os.system("taskkill /im chromedriver.exe")
+    time.sleep(2)
+    os.system("taskkill /f /im chromedriver.exe")
 # changes display in info_box based on what is selected for manufacturer
 def on_selection(evt):
     selected = man_box.curselection()
     details = man_box.get(selected[0])
-    manu_info = selected[0]
+    manu_info = manufacturers[selected[0]]
     var.set(manu_info[0] + "\n" + manu_info[1] + "\n" + "Username: " + manu_info[2] + "\n" + "Password: " + manu_info[3])
-    print(selected)
     
 # About window in menu
 def about_window():
@@ -156,7 +156,7 @@ details = tk.StringVar()
 
 man_box = tk.Listbox(width = 15, border = 2)
 for name in manufacturers:
-    man_box.insert(num, name)
+    man_box.insert(num, name[0])
     num += 1
 man_box.bind("<<ListboxSelect>>", on_selection)
 man_box.grid(row = 1, column = 0, rowspan = 3)
