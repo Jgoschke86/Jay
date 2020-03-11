@@ -66,14 +66,14 @@ def execute(evt):
         name_input.send_keys(Briggs[2])
         pass_input = driver.find_element_by_xpath("//*[@id=\"passwordloginBlock1\"]")
         pass_input.send_keys(Briggs[3])
-        login_button = driver.find_element_by_xpath("//*[@id=\"loginSubmitloginBlock1\"]").click()
-    if details == "Exmark":
+        driver.find_element_by_xpath("//*[@id=\"loginSubmitloginBlock1\"]").click()
+    elif details == "Exmark":
         driver.get(Exmark[1])
         name_input = driver.find_element_by_xpath("//*[@id=\"UserName\"]")
         name_input.send_keys(Exmark[2])
         pass_input = driver.find_element_by_xpath("//*[@id=\"Password\"]")
         pass_input.send_keys(Exmark[3])
-        login_button = driver.find_element_by_xpath("//*[@id=\"form0\"]/div/div/div[3]/div/p/input").click()
+        driver.find_element_by_xpath("//*[@id=\"form0\"]/div/div/div[3]/div/p/input").click()
     elif details == "Honda":
         driver.get(Honda[1])
         dlr_input = driver.find_element_by_xpath("/html/body/form/table[2]/tbody/tr[2]/td[2]/input")
@@ -82,14 +82,14 @@ def execute(evt):
         name_input.send_keys(Honda[2])
         pass_input = driver.find_element_by_xpath("//*[@id=\"txtPassword\"]")
         pass_input.send_keys(Honda[3])
-        login_button = driver.find_element_by_xpath("//*[@id=\"btnLogon\"]").click()
+        driver.find_element_by_xpath("//*[@id=\"btnLogon\"]").click()
     elif details == "Kawasaki Engines":
         driver.get(Kawasaki[1])
         name_input = driver.find_element_by_xpath("//*[@id=\"W_USERNAME\"]")
         name_input.send_keys(Kawasaki[2])
         pass_input = driver.find_element_by_xpath("//*[@id=\"LW3USRPAS\"]")
         pass_input.send_keys(Kawasaki[3])
-        login_button = driver.find_element_by_xpath("//*[@id=\"Login\"]").click()
+        driver.find_element_by_xpath("//*[@id=\"Login\"]").click()
     elif details == "Kohler Engines":
         driver.get(Kohler[1])
     elif details == "Scag Mowers":
@@ -98,28 +98,28 @@ def execute(evt):
         name_input.send_keys(Scag[2])
         pass_input = driver.find_element_by_xpath("//*[@id=\"txtUserPass\"]")
         pass_input.send_keys(Scag[3])
-        login_button = driver.find_element_by_xpath("//*[@id=\"Button1\"]").click()
+        driver.find_element_by_xpath("//*[@id=\"Button1\"]").click()
     elif details == "Schiller/Ryan/Bobcat":
         driver.get(Schiller[1])
         name_input = driver.find_element_by_xpath("//*[@id=\"sgcuser\"]")
         name_input.send_keys(Schiller[2])
         pass_input = driver.find_element_by_xpath("//*[@id=\"sgcpass\"]")
         pass_input.send_keys(Schiller[3])
-        login_button = driver.find_element_by_xpath("//*[@id=\"sgcDoLogin\"]").click()
+        driver.find_element_by_xpath("//*[@id=\"sgcDoLogin\"]").click()
     elif details == "Stihl":
         driver.get(Stihl[1])
         name_input = driver.find_element_by_xpath("//*[@id=\"username\"]")
         name_input.send_keys(Stihl[2])
         pass_input = driver.find_element_by_xpath("//*[@id=\"password\"]")
         pass_input.send_keys(Stihl[3])
-        login_button = driver.find_element_by_xpath("//*[@id=\"content\"]/div/div/div/form/p[4]/input").click()
+        driver.find_element_by_xpath("//*[@id=\"content\"]/div/div/div/form/p[4]/input").click()
     elif details == "Toro":
         driver.get(Toro[1])
         name_input = driver.find_element_by_xpath("//*[@id=\"username\"]")
         name_input.send_keys(Toro[2])
         pass_input = driver.find_element_by_xpath("//*[@id=\"password\"]")
         pass_input.send_keys(Toro[3])
-        login_button = driver.find_element_by_xpath("/html/body/div/div[2]/div/form/div[6]/a").click()
+        driver.find_element_by_xpath("/html/body/div/div[2]/div/form/div[6]/a").click()
     time.sleep(2)
     os.system("taskkill /f /im chromedriver.exe")
 # changes display in info_box based on what is selected for manufacturer
@@ -154,7 +154,7 @@ Labelvar = tk.StringVar()
 details = tk.StringVar()
 
 
-man_box = tk.Listbox(width = 15, border = 2)
+man_box = tk.Listbox(width = 20, border = 2)
 for name in manufacturers:
     man_box.insert(num, name[0])
     num += 1
