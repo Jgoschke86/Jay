@@ -3,7 +3,9 @@ import xlrd, time, os
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
-trin = xlrd.open_workbook(r"C:\Users\jgosc\Documents\GitHub\Jay\Work\Training Info.xlsx")
+
+trin = xlrd.open_workbook(r"S:\OPE\Justin\Training Info.xlsx")
+# trin = xlrd.open_workbook(r"C:\Users\jgosc\Documents\GitHub\Jay\Work\Training Info.xlsx")
 sheet = trin.sheet_by_index(0)
 manufacturers = ["Briggs", "Exmark", "Honda", "Kawasaki", "Kohler", "Kubota", "MTD", "Scag", "Stihl", "Toro"]
 manufacturers.sort()
@@ -15,6 +17,8 @@ root.title("Training Logins")
 
 
 def execute(evt):
+    driver = webdriver.Chrome(executable_path = r"C:\Users\jgoschke\Downloads\chromedriver.exe")
+    driver.maximize_window()
     man_name = man_box.get(man_box.curselection())
     for i in range(sheet.nrows):
         if sheet.cell_value(i,0) == man_name:
@@ -23,7 +27,11 @@ def execute(evt):
             website = sheet.cell_value(i,3)
         else:
             pass
-    print(username, password)
+    driver.get(website)
+    name_input = driver.find_element_by_xpath()
+    name_input.send_keys(username)
+    pass_input = driver.find_element_by_type()
+    pass_input.send_keys(password)
     
 
 # About window in menu
@@ -58,6 +66,7 @@ menu_bar.add_cascade(label = "File", menu = file)
 file.add_command(label = "About", command = about_window)
 file.add_command(command = root.destroy, label = "Exit")
 
+    
 
 root.config(menu = menu_bar)
 root.mainloop()
