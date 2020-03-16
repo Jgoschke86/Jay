@@ -12,6 +12,50 @@ manufacturers.sort()
 num = 1
 
 
+def key_path():
+    if manufacturers == "Briggs"
+        name_path = 
+        password_path = 
+        button_press = 
+    if manufacturers == "Exmark":
+        name_path = "//*[@id=\"userNameBox\"]"
+        password_path = "//*[@id=\"passWordBox\"]"
+        button_press = "//*[@id=\"submit\"]"
+    if manufacturers == "Honda":
+        name_path = 
+        password_path = 
+        button_press = 
+    if manufacturers == "kawasaki":
+        name_path = 
+        password_path = 
+        button_press = 
+    elif manufacturers == "Kohler":
+        name_path = "//*[@id=\"login_userid_tb\"]"
+        password_path = "//*[@id=\"login_password_tb\"]"
+        button_press = "//*[@id=\"login_btn\"]"
+    elif manufacturers == "Kubota":
+        name_path = 
+        password_path = 
+        button_press = 
+    elif manufacturers == "MTD":
+        name_path = 
+        password_path = 
+    elif manufacturers == "Scag":
+        name_path = "//*[@id=\"login_userid\"]"
+        password_path = "//*[@id=\"login_pwd\"]"
+        button_press = "//*[@id=\"loginFormBottom\"]/input[2]"
+    elif manufacturers == "Stihl":
+        additional_press = 
+        name_path = "//*[@id=\"login-form\"]/form/table/tbody/tr[2]/td[2]/input"
+        password_path = "//*[@id=\"login-form\"]/form/table/tbody/tr[3]/td[2]/input"
+        button_press = "//*[@id=\"login\"]"
+    elif manufacturers== "Toro":
+        additional_press = "//*[@id=\"loginIcon\"]"
+        name_path = "//*[@id=\"username\"]"
+        password_path = "//*[@id=\"password\"]"
+        button_press = "//*[@id=\"loginButton\"]"
+
+
 root = tk.Tk()
 root.title("Training Logins")
 
@@ -28,11 +72,13 @@ def execute(evt):
         else:
             pass
     driver.get(website)
-    name_input = driver.find_element_by_xpath()
+    name_input = driver.find_element_by_xpath(name_path)
+    pass_input = driver.find_element_by_xpath(password_path)
     name_input.send_keys(username)
-    pass_input = driver.find_element_by_type()
     pass_input.send_keys(password)
     
+    time.sleep(2)
+    os.system("taskkill /f /im chromedriver.exe")
 
 # About window in menu
 def about_window():
