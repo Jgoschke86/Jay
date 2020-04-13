@@ -10,50 +10,7 @@ sheet = trin.sheet_by_index(0)
 manufacturers = ["Briggs", "Exmark", "Honda", "Kawasaki", "Kohler", "Kubota", "MTD", "Scag", "Stihl", "Toro"]
 manufacturers.sort()
 num = 1
-
-
-def key_path():
-    if manufacturers == "Briggs"
-        name_path = 
-        password_path = 
-        button_press = 
-    if manufacturers == "Exmark":
-        name_path = "//*[@id=\"userNameBox\"]"
-        password_path = "//*[@id=\"passWordBox\"]"
-        button_press = "//*[@id=\"submit\"]"
-    if manufacturers == "Honda":
-        name_path = 
-        password_path = 
-        button_press = 
-    if manufacturers == "kawasaki":
-        name_path = 
-        password_path = 
-        button_press = 
-    elif manufacturers == "Kohler":
-        name_path = "//*[@id=\"login_userid_tb\"]"
-        password_path = "//*[@id=\"login_password_tb\"]"
-        button_press = "//*[@id=\"login_btn\"]"
-    elif manufacturers == "Kubota":
-        name_path = 
-        password_path = 
-        button_press = 
-    elif manufacturers == "MTD":
-        name_path = 
-        password_path = 
-    elif manufacturers == "Scag":
-        name_path = "//*[@id=\"login_userid\"]"
-        password_path = "//*[@id=\"login_pwd\"]"
-        button_press = "//*[@id=\"loginFormBottom\"]/input[2]"
-    elif manufacturers == "Stihl":
-        additional_press = 
-        name_path = "//*[@id=\"login-form\"]/form/table/tbody/tr[2]/td[2]/input"
-        password_path = "//*[@id=\"login-form\"]/form/table/tbody/tr[3]/td[2]/input"
-        button_press = "//*[@id=\"login\"]"
-    elif manufacturers== "Toro":
-        additional_press = "//*[@id=\"loginIcon\"]"
-        name_path = "//*[@id=\"username\"]"
-        password_path = "//*[@id=\"password\"]"
-        button_press = "//*[@id=\"loginButton\"]"
+    
 
 
 root = tk.Tk()
@@ -71,11 +28,57 @@ def execute(evt):
             website = sheet.cell_value(i,3)
         else:
             pass
+    if man_name == "Briggs":
+        name_path = "//*[@id=\"usernameloginBlock1\"]"
+        password_path = "//*[@id=\"passwordloginBlock1\"]"
+        button_press = "//*[@id=\"loginSubmitloginBlock1\"]"
+    elif man_name == "Exmark":
+        name_path = "//*[@id=\"userNameBox\"]"
+        password_path = "//*[@id=\"passWordBox\"]"
+        button_press = "//*[@id=\"submit\"]"
+    # elif man_name == "Honda":
+    #     name_path = 
+    #     password_path = 
+    #     button_press = 
+    # elif man_name == "Kawasaki":
+    #     name_path = 
+    #     password_path = 
+    #     button_press = 
+    elif man_name == "Kohler":
+        name_path = "//*[@id=\"login_userid_tb\"]"
+        password_path = "//*[@id=\"login_password_tb\"]"
+        button_press = "//*[@id=\"login_btn\"]"
+    # elif man_name == "Kubota":
+    #     name_path = 
+    #     password_path = 
+    #     button_press = 
+    # elif man_name == "MTD":
+    #     name_path = 
+    #     password_path = 
+    elif man_name == "Scag":
+        name_path = "//*[@id=\"login_userid\"]"
+        password_path = "//*[@id=\"login_pwd\"]"
+        button_press = "//*[@id=\"loginFormBottom\"]/input[2]"
+    elif man_name == "Stihl":
+        additional_press1 = "//*[@id=\"distributor\"]"
+        additional_press2 = 
+        name_path = "//*[@id=\"login-form\"]/form/table/tbody/tr[2]/td[2]/input"
+        password_path = "//*[@id=\"login-form\"]/form/table/tbody/tr[3]/td[2]/input"
+        button_press = "//*[@id=\"login\"]"
+    elif man_name== "Toro":
+        additional_press1 = "//*[@id=\"loginIcon\"]"
+        name_path = "//*[@id=\"username\"]"
+        password_path = "//*[@id=\"password\"]"
+        button_press = "//*[@id=\"loginButton\"]"
     driver.get(website)
+    driver.find_element_by_xpath(additional_press1).click()
+    time.sleep(2)
+    driver.find_element_by_xpath(additional_press2).click()
     name_input = driver.find_element_by_xpath(name_path)
     pass_input = driver.find_element_by_xpath(password_path)
     name_input.send_keys(username)
     pass_input.send_keys(password)
+    driver.find_element_by_xpath(button_press).click()
     
     time.sleep(2)
     os.system("taskkill /f /im chromedriver.exe")

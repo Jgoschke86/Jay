@@ -54,6 +54,7 @@ Toro = ["Toro", "http://dealer.thetorocompany.com/", str(tor_usr), str(tor_pass)
 manufacturers = [Briggs, Exmark, Honda, Kawasaki, Kohler, Scag, Schiller, Stihl, Toro]
 manufacturers.sort()
 
+
 # What to do when button is pressed
 def execute(evt):
     selected = man_box.curselection()
@@ -120,15 +121,19 @@ def execute(evt):
         pass_input = driver.find_element_by_xpath("//*[@id=\"password\"]")
         pass_input.send_keys(Toro[3])
         driver.find_element_by_xpath("/html/body/div/div[2]/div/form/div[6]/a").click()
+    
     time.sleep(2)
-    os.system("taskkill /f /im chromedriver.exe")
+    driver.service.stop()
+    # os.system("taskkill /f /im chromedriver.exe")
+
+
 # changes display in info_box based on what is selected for manufacturer
 def on_selection(evt):
     selected = man_box.curselection()
-    details = man_box.get(selected[0])
     manu_info = manufacturers[selected[0]]
     var.set(manu_info[0] + "\n" + manu_info[1] + "\n" + "Username: " + manu_info[2] + "\n" + "Password: " + manu_info[3])
     
+
 # About window in menu
 def about_window():
     top = tk.Toplevel()
@@ -149,6 +154,7 @@ menu_bar.add_cascade(label = "File", menu = file)
 file.add_command(label = "About", command = about_window)
 file.add_command(command = root.destroy, label = "Exit")
 
+
 # The selection box details
 Labelvar = tk.StringVar()
 details = tk.StringVar()
@@ -161,10 +167,12 @@ for name in manufacturers:
 man_box.bind("<<ListboxSelect>>", on_selection)
 man_box.grid(row = 1, column = 0, rowspan = 3)
 
+
 # Execute button
 go_button = tk.Button(root, text = "GO", font = 16, width = 15, bg = "dark gray")
 go_button.grid(row = 1, column = 1)
 go_button.bind("<Button-1>", execute)
+
 
 # Display box for information
 info_box_top = tk.Label(root, text = "Login Information")
