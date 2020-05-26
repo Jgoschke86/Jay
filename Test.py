@@ -1,6 +1,7 @@
-name = ["bleh"]
-i = "meh"
-j = name[0]
-t = i + j
-print(t)
+import pandas as pd
 
+lst = ["Geeks", "for", "geeks", "is", "portal", "for", "geeks"]
+
+df = pd.DataFrame(lst)
+
+print(df)
