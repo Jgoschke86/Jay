@@ -1,6 +1,7 @@
 import tkinter as tk
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.options import Options
 import xlrd, time, os
 
 
@@ -59,8 +60,14 @@ manufacturers.sort()
 def execute(evt):
     selected = man_box.curselection()
     details = man_box.get(selected[0])
-    driver = webdriver.Chrome(executable_path = r"C:\Users\jgoschke\Downloads\chromedriver.exe")
-    driver.maximize_window()
+    options = Options()
+    options.add_argument("--start-maximized")
+    options.add_argument("--disable-notifications")
+    driver = webdriver.Chrome(executable_path = r"C:\Users\jgoschke\Downloads\chromedriver.exe", chrome_options = options)
+    
+
+
+
     if details == "Briggs and Stratton":
         driver.get(Briggs[1])
         name_input = driver.find_element_by_xpath("//*[@id=\"usernameloginBlock1\"]")
@@ -123,8 +130,8 @@ def execute(evt):
         driver.find_element_by_xpath("/html/body/div/div[2]/div/form/div[6]/a").click()
     
     time.sleep(2)
-    driver.service.stop()
-    # os.system("taskkill /f /im chromedriver.exe")
+    options.add_experimental_option("detach", True)
+    os.system("taskkill /f /im chromedriver.exe")
 
 
 # changes display in info_box based on what is selected for manufacturer
