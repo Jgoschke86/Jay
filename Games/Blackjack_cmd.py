@@ -88,13 +88,15 @@ while game_on:
                             c_score += 11
                 if c_score <= score and c_score < 21:
                     continue
-                elif c_score > score and c_score < 21:
+                elif c_score > score and c_score <= 21:
                     lose = True
                     turn = False
+                    cls()
                     break
                 else:
                     win = True
                     turn = False
+                    cls()
                     break
                     
 
@@ -103,8 +105,8 @@ while game_on:
             break
         else:
             print("Please enter a valid selection of 1, 2, or 3")
-    while lose:
-        cls()
+    while lose == True:
+        
         print(p_cards)
         print(c_cards)
         print("You lose!")
@@ -120,8 +122,9 @@ while game_on:
             game_on = False
             break
         else:
+            cls()
             print("Not a valid answer, please answer \"y\" or \"n\"")
-    while win:
+    while win == True:
         print(p_cards)    
         print(c_cards)
         print("You win!")
@@ -137,6 +140,7 @@ while game_on:
             game_on = False
             break
         else:
+            cls()
             print("Not a valid answer, please answer \"y\" or \"n\"")
         
                 
