@@ -5,11 +5,14 @@ from openpyxl.xml.constants import MAX_ROW
 print("Opening Excel and reading file......")
 wb = openpyxl.load_workbook(r"C:\Python Stuff\Test Log.xlsx")
 
-names = []
-for name in wb.get_sheet_names():
-    names.append(name)
+names = wb.sheetnames
 
-print(names)
+names.remove("Time")
+names.remove("")
+names.remove("")
+names.remove("")
+
+print("Current names to scan.... " + names)
 sheet = wb.active
 
 
