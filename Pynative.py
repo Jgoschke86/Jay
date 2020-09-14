@@ -102,3 +102,94 @@
 
 
 #Question 7 - count times word appears in string
+
+# word = input("What word would you like to count? ")
+# sent = input("What is the sentence to search through? ")
+# words = sent.split()
+# times = 0
+# for i in words:
+#     if word.lower() == i.lower():
+#         times += 1
+# if times == 0:
+#     print("Your word does not appear in the sentence.")
+# else:
+#     print("Your word appears " + str(times) + "times.")
+
+
+#Question 8 - print pattern
+
+# for num in range(10):
+#     for i in range(num):
+#         print(str(num), end = "")
+#     print("\n")
+
+
+#Question 9 - reverse number and see if it is the same
+
+# number = input("What is your number? ")
+# numbers = []
+# final_number = ""
+# for num in number:
+#     numbers.append(num)
+# numbers.reverse()
+# final_number = final_number.join(numbers)
+# if number == final_number:
+#     print("The original and reversed number are the same.")
+# else:
+#     print("The original and reversed number are not the same.")
+
+#Question 10 - combine lists
+
+# first_list = [10, 20, 23, 11, 17]
+# second_list = [13, 43, 24, 36, 12]
+# result = []
+# for num in first_list:
+#     if num % 2 == 1:
+#         result.append(num)
+# for num in second_list:
+#     if num % 2 == 0:
+#         result.append(num)
+# print(result)
+
+
+#Question 11 - reverse and split num
+
+# number = input("What is the number? ")
+# numbers = []
+# final = " "
+# for num in number:
+#     numbers.append(num)
+# numbers.reverse()
+# final = final.join(numbers)
+# print(str(final))
+
+
+#Question 12 - tax income
+
+# income = int(input("What is your income? "))
+# first = 0
+# second = 0
+# third = 0
+# if income > 20000:
+#     first = 10000
+#     second = 10000
+#     third = income - first - second
+# elif income > 10000:
+#     first = 10000
+#     second = 10000
+# else:
+#     first = income
+# taxable = (first * 0) + (second * .1) + (third * .2)
+# print("Your taxes are " + str(taxable))
+
+
+#Question 13 - multiplication table
+
+# numbers = []
+# for num in range(1,11):
+#     for i in range(1,11):
+#         print(num * i, end = " ")
+#     print("\r")
+
+
+#Question  - downward pyramid 
