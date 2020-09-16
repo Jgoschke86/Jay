@@ -272,3 +272,47 @@
 #     print(" ")
 
 
+
+#Question 3 - sum of numbers
+
+# num = int(input("What is your number? "))
+# for i in range(1, num + 1):
+#     print(num + i)
+
+
+#Question 4 - multi table
+
+# num = int(input("What is your number? "))
+ 
+# for i in range(1, 11):
+#     print(i * num)
+    
+
+#Question 5 - list iter
+
+# list1 = [12, 15, 32, 42, 55, 75, 122, 132, 150, 180, 200]
+
+# for num in list1:
+#     if num >= 150:
+#         print(num)
+#         break
+#     elif num % 5 == 0:
+#         print(num)
+#     else:
+#         pass
+
+
+#Question 6 - number of digits in num
+
+# num = input("What is your number? ")
+# ind = []
+# for x in num:
+#     ind.append(x)
+# print(len(ind))
+
+
+#Question 7 - pattern
+
+n = [5, 4, 3, 2, 1]
+for i in n:
+    
