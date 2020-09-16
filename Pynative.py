@@ -192,4 +192,83 @@
 #     print("\r")
 
 
-#Question  - downward pyramid 
+#Question 14 - downward pyramid 
+
+# n = 5
+# for i in range(n):
+#     print("* " * n)
+#     n -=1
+
+
+#Question 15 - exponents
+
+# base = int(input("What is the base number? "))
+# exp = int(input("What is the power? "))
+# num = pow(base, exp)
+# print(num)
+
+
+#Input Ouput
+#Question 1 - 2 number multi
+
+# num1 = int(input("What is your first number? "))
+# num2 = int(input("What is your second number? "))
+# multi = num1 * num2
+# print("Your answer is " + str(multi))
+
+
+#Question 2 - split and join name
+
+# sent = "My name is James"
+# words = sent.split()
+# sent2 = "**"
+# sent2 = sent2.join(words)
+# print(sent2)
+
+
+#Question 4 - rounding
+
+# dis = 458.541315
+# dis = round(dis, 2)
+# print(dis)
+
+#Question 5 - list input
+
+# num = []
+# for i in range(5):
+#     num.append(float(input("Please give a number. ")))
+# print(num)
+
+#Question 7 - 3 strings
+
+# str1, str2,str3 = input("Enter 3 strings ").split()
+# print(str1, str2, str3)
+
+
+#Question 8 - foramtting
+
+# total_money = 1000
+# quantity = 3
+# price = 450
+# print(f"I have {total_money} dollars so i can buy {quantity} tickets for {price} dollars.")
+
+
+
+#Loops
+#Question 1 - number loop
+
+# num = 0
+# while num <= 10:
+#     print(num)
+#     num += 1
+
+
+ # Question 2 - pattern
+
+# num = 6
+# for i in range(1,num):
+#     for j in range(1, i+1):
+#         print(j, end= " ")
+#     print(" ")
+
+
