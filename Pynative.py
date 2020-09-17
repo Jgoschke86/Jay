@@ -313,6 +313,38 @@
 
 #Question 7 - pattern
 
-n = [5, 4, 3, 2, 1]
-for i in n:
+# n = 5
+# for i in range(0, 5):
+#     for j in range(n, 0, -1):
+#         print(j, end = " ")
+#     n -= 1
+#     print("")
     
+
+#Question 8 - reverse list
+
+# list1 = [10, 20, 30, 40, 50]
+# for i in range(4,-1,-1):
+#     print(list1[i])
+    
+
+# Question 9 - numbers
+
+# for num in range(-10, 0):
+#     print(num)
+
+
+# Question 10 - done
+
+# for i in range(5):
+#     print(i)
+# print("Done")
+
+
+# Question 11 - prime numbers
+
+print("Prime numbers between 25 and 50 are:")
+for num in range(25, 50 + 1):
+    for i in range(2, num-1):
+        if num % i == 0:
+            print(str(num) + " is not prime")
