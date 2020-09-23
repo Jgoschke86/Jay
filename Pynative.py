@@ -343,8 +343,53 @@
 
 # Question 11 - prime numbers
 
-print("Prime numbers between 25 and 50 are:")
-for num in range(25, 50 + 1):
-    for i in range(2, num-1):
-        if num % i == 0:
-            print(str(num) + " is not prime")
+# print("Prime numbers between 25 and 50 are:")
+
+# for num in range(25, 51):
+#     for i in range(2, num):
+#         if (num % i) == 0:
+#             break
+#     else:
+#         print(num)
+
+
+# Question 12 - Fibonacci
+
+# fib = []
+# num = 0
+# while len(fib) != 10:
+#     if num <= 1:
+#         fib.append(num)
+#         num += 1
+#     else:
+#         answer = fib[-1] + fib[-2]
+#         fib.append(answer)
+# print(fib)
+
+
+# Question 13 - factorial
+
+# def factor(num):
+#     for i in range(1,num):
+#         num = i * num
+#     return num
+
+# num = int(input("what is the number: "))
+# print(factor(num))
+
+
+# Question 14 - reverse number
+
+n = 4562; 
+rev = 0
+  
+while(n > 0): 
+    print(n)
+    a = n % 10
+    print("a",a)
+    rev = rev * 10 + a
+    print("rev", rev)
+    n = n // 10
+    print("n", n)
+      
+print(rev) 
