@@ -62,7 +62,7 @@
 #     print(joined_word)
 
 
-#Question 5 - same first and last number given in list 
+#Question 5 - same first and last number given in list
 
 # num1 = input("Please enter 4 numbers: ")
 # num2 = input()
@@ -192,7 +192,7 @@
 #     print("\r")
 
 
-#Question 14 - downward pyramid 
+#Question 14 - downward pyramid
 
 # n = 5
 # for i in range(n):
@@ -283,10 +283,10 @@
 #Question 4 - multi table
 
 # num = int(input("What is your number? "))
- 
+
 # for i in range(1, 11):
 #     print(i * num)
-    
+
 
 #Question 5 - list iter
 
@@ -319,14 +319,14 @@
 #         print(j, end = " ")
 #     n -= 1
 #     print("")
-    
+
 
 #Question 8 - reverse list
 
 # list1 = [10, 20, 30, 40, 50]
 # for i in range(4,-1,-1):
 #     print(list1[i])
-    
+
 
 # Question 9 - numbers
 
@@ -380,16 +380,54 @@
 
 # Question 14 - reverse number
 
-n = 4562; 
-rev = 0
-  
-while(n > 0): 
-    print(n)
-    a = n % 10
-    print("a",a)
-    rev = rev * 10 + a
-    print("rev", rev)
-    n = n // 10
-    print("n", n)
-      
-print(rev) 
+# n = 4562
+# rev = 0
+
+# while(n > 0):
+#     a = n % 10
+#     rev = rev * 10 + a
+#     n = n // 10
+
+# print(rev)
+
+
+# Question 15 - only even positions
+
+# my_list = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+
+# for num in my_list[1:len(my_list):2]:
+#     print(num)
+
+
+# Question 16 - cube number
+
+
+# def cubed(a):
+#      cubed = a *a *a
+#      return cubed
+# a = int(input("What number you want cubed?  "))
+# print(cubed(a))
+
+
+# Question 17 - sum of series
+
+# terms = int(input("How many times would you like to repeat?  "))
+# start = int(input("What number?  "))
+# new_start = start
+# sum = 0
+# for i in range(terms):
+#     print(new_start, end = " ")
+#     sum += new_start
+#     new_start = new_start * 10 + start
+# print("\nThe sum of your sequence is ", sum)
+
+
+# Question 18 - pattern
+
+# star = "*"
+# num = 0
+# for i in range(1,6):
+#     print(star * i)
+# for i in range(4,0,-1):
+#     print(star*i)
+
