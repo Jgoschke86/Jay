@@ -431,3 +431,72 @@
 # for i in range(4,0,-1):
 #     print(star*i)
 
+
+# Function Excercise
+# Question 1 - name/age
+# def info(name, age):
+#     print(name, age)
+
+# info("Bob", 23)
+
+# Question 2 - var length arg
+# def func1(*args):
+#     for i in args:
+#         print(i)
+# func1(20,40,60)
+# func1(80,100)
+
+# Question 3 - calculation
+# def calc(a,b):
+#     add = a + b
+#     sub = a - b
+#     print(add,sub)
+# calc(40, 10)
+
+# Question 4 - employee
+# def employ(name, sal = 9000):
+#     print("Emplyee ", name, "salary is: ", sal)
+
+# employ("Ben", 2000)
+# employ("Ben")
+
+# Question 5 - inner addition
+# def outter(a,b):
+#     def inner(a,b):
+#         return a+b
+#     add = inner(a,b)
+#     return add+5
+
+# res = outter(5,10)
+# print(res)
+
+# Question 6 - recursive
+# def calculateSum(num):
+#     if num:
+#         return num + calculateSum(num-1)
+#     else:
+#         return 0
+
+# res = calculateSum(10)
+# print(res)
+
+# Question 7 - assign new name
+
+# def display_student(name, age):
+#     print(name, age)
+
+# display_student("Emma", 26)
+# show_student = display_student
+# show_student("Brad", 30)
+
+# Question 8 - gen list
+# print(list(range(4,30,2)))
+
+# Question 9 - return largest item
+
+# lista = [4,6,8,24,12,2]
+# print(max(lista))
+
+
+# Strings
+# Question 1 - mid of word

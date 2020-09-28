@@ -32,4 +32,7 @@
 #         processID = elem['pid']
 #         os.system("taskkill /f /PID " + str(processID))
 
-print(25%2)
+num = 10
+ans = num + num-1
+
+print(ans)
