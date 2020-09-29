@@ -498,5 +498,36 @@
 # print(max(lista))
 
 
-# Strings
-# Question 1 - mid of word
+# Data Structure
+# Question 1 - odd even list
+# list_one = [3,6,9,12,15,18,21]
+# list_two = [4,8,12,16,20,24,28]
+# print("Element at odd-index positions from list one")
+# list_one_odd = list_one[1::2]
+# print(list_one_odd)
+# print("Element at even-index positions from list two")
+# list_two_even = list_two[0::2]
+# print(list_two_even)
+# print("Printing final third list")
+# third = []
+# third.extend(list_one_odd)
+# third.extend(list_two_even)
+# print(third)
+
+# Question 2 - move stuff
+# list_one = [34, 54, 67, 89, 11, 43, 94]
+# print("Original list ", list_one)
+# removed = list_one.pop(4)
+# print(list_one)
+# list_one.insert(2, removed)
+# print(list_one)
+# list_one.append(removed)
+# print(list_one)
+
+# Question 3 - slice list
+og_list = [11, 45, 8, 23, 14, 12, 78, 45, 89]
+list_length = len(og_list) / 3
+first = 
+
+
+
