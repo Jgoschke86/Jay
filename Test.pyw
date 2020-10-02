@@ -32,7 +32,19 @@
 #         processID = elem['pid']
 #         os.system("taskkill /f /PID " + str(processID))
 
-num = 10
-ans = num + num-1
 
-print(ans)
+
+game_on = True
+def Jay():
+    if answer == "y":
+        return True
+    else:
+        return False
+    
+
+while game_on:
+    print(game_on)
+    answer = input("play again? ")
+    print(answer)
+    game_on = Jay()
+    
