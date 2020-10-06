@@ -1,5 +1,8 @@
 from tkinter import *
 from tkinter import font as tkfont
+from Work_shortcuts import *
+
+
 
 
 root = Tk()
@@ -30,7 +33,10 @@ menu_bar.add_cascade(label = "File", menu = file)
 file.add_command(label = "About", command = about_window)
 file.add_command(command = root.destroy, label = "Exit")
 
-manufacturer = ["Exmark", "Honda", "Toro", "Redmax", "Briggs", "Cub Cadet", "Kohler", "Kawasaki", "Scag"]
+manufacturer = ["Exmark", "Honda", "Toro",
+                "Redmax", "Briggs", "Cub Cadet",
+                "Kohler", "Kawasaki", "Scag",
+                "Schiller", "Stihl"]
 row_num = 1
 column_num = 1
 for i in manufacturer:
@@ -39,6 +45,7 @@ for i in manufacturer:
         row_num += 1
     i = Button(font = button_font, text = i, bg = "gray", fg = "black", width = 10, relief = GROOVE, border = 5, activebackground = "dark gray")
     i.grid(column = column_num, row = row_num)
+    i.bind("<Button-1>", execute)
     column_num += 1
     
 
