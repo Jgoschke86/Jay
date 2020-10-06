@@ -6,15 +6,15 @@ import xlrd, time, os
 
 
 #Opens the excel sheet to read it
-intwarr = xlrd.open_workbook(r"S:\OPE\OPE Service\INTERNET WARRANTY SIGN ONS.xls")
-sheet = intwarr.sheet_by_index(0)
-cell = sheet.cell(0,3)
-num = 1
+# intwarr = xlrd.open_workbook(r"S:\OPE\OPE Service\INTERNET WARRANTY SIGN ONS.xls")
+# sheet = intwarr.sheet_by_index(0)
+# cell = sheet.cell(0,3)
+# num = 1
 
 #creates Kinter window
-root = tk.Tk()
+# root = tk.Tk()
 
-root.title("Website Shortcuts")
+# root.title("Website Shortcuts")
 
 #Login information extracted from excel sheet
 brg_usr = sheet.cell_value(18,1)
@@ -142,24 +142,24 @@ def on_selection(evt):
     
 
 # About window in menu
-def about_window():
-    top = tk.Toplevel()
-    top.title("About")
-    about_text = tk.Label(top, text = """Created by Justin Goschke
-    v1.0""", font = 15)
-    about_text.pack()
-    back_button = tk.Button(top, text = "Back", command = top.destroy, width = 15, font = 16, bg = "dark gray")
-    back_button.pack()
-    top.mainloop()
+# def about_window():
+#     top = tk.Toplevel()
+#     top.title("About")
+#     about_text = tk.Label(top, text = """Created by Justin Goschke
+#     v1.0""", font = 15)
+#     about_text.pack()
+#     back_button = tk.Button(top, text = "Back", command = top.destroy, width = 15, font = 16, bg = "dark gray")
+#     back_button.pack()
+#     top.mainloop()
 
 
 
 # Menu Bar details
-menu_bar = tk.Menu(root)
-file = tk.Menu(menu_bar, tearoff = 0)
-menu_bar.add_cascade(label = "File", menu = file)
-file.add_command(label = "About", command = about_window)
-file.add_command(command = root.destroy, label = "Exit")
+# menu_bar = tk.Menu(root)
+# file = tk.Menu(menu_bar, tearoff = 0)
+# menu_bar.add_cascade(label = "File", menu = file)
+# file.add_command(label = "About", command = about_window)
+# file.add_command(command = root.destroy, label = "Exit")
 
 
 # The selection box details
@@ -167,27 +167,27 @@ Labelvar = tk.StringVar()
 details = tk.StringVar()
 
 
-man_box = tk.Listbox(width = 20, border = 2)
-for name in manufacturers:
-    man_box.insert(num, name[0])
-    num += 1
-man_box.bind("<<ListboxSelect>>", on_selection)
-man_box.grid(row = 1, column = 0, rowspan = 3)
+# man_box = tk.Listbox(width = 20, border = 2)
+# for name in manufacturers:
+#     man_box.insert(num, name[0])
+#     num += 1
+# man_box.bind("<<ListboxSelect>>", on_selection)
+# man_box.grid(row = 1, column = 0, rowspan = 3)
 
 
 # Execute button
-go_button = tk.Button(root, text = "GO", font = 16, width = 15, bg = "dark gray")
-go_button.grid(row = 1, column = 1)
-go_button.bind("<Button-1>", execute)
+# go_button = tk.Button(root, text = "GO", font = 16, width = 15, bg = "dark gray")
+# go_button.grid(row = 1, column = 1)
+# go_button.bind("<Button-1>", execute)
 
 
 # Display box for information
-info_box_top = tk.Label(root, text = "Login Information")
-info_box = tk.Label(root, width = 45, height = 10, relief = tk.SUNKEN, border = 2, bg = "white")
-info_box.config(textvariable = var)
-info_box_top.grid(row = 0, column = 4)
-info_box.grid(row = 1, column = 4)
+# info_box_top = tk.Label(root, text = "Login Information")
+# info_box = tk.Label(root, width = 45, height = 10, relief = tk.SUNKEN, border = 2, bg = "white")
+# info_box.config(textvariable = var)
+# info_box_top.grid(row = 0, column = 4)
+# info_box.grid(row = 1, column = 4)
 
 
-root.config(menu = menu_bar)
-root.mainloop()
+# root.config(menu = menu_bar)
+# root.mainloop()
