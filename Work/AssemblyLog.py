@@ -1,5 +1,6 @@
 import openpyxl
-from openpyxl.xml.constants import MAX_COLUMN, MAX_ROW
+from openpyxl.utils.cell import coordinate_from_string, absolute_coordinate
+from openpyxl.xml.constants import MAX_COLUMN, MAX_ROW, MIN_COLUMN
 
 
 print("Opening Excel and reading file......")
@@ -9,25 +10,29 @@ time_sheet = wb.worksheets[9]
 
 ws = wb.worksheets[0]
 start_cell = 10
-row_numbers = ws.max_row
+
 
 names = wb.sheetnames
 names.remove("Time")
 names.remove("Set up Checklist")
 names.remove("Extra")
 
-print("Current names to scan.... ")
-print(names)
 
-print("There are " + str(row_numbers) + " cells to scan")
+# print("Current names to scan.... ")
+# print(names)
 
 print("Scanning cells.......")
-for i in ws.iter_rows(min_row = start_cell, min_col = 3, max_row = 2712, max_col = 3):
-    for cell in i:
-        print(cell.value)
-        for j in time_sheet.iter_rows():
-            for amount in j:
-                if cell.value == amount.value:
-                    time_row = int(amount.row) + 1
-                    time_in = time_sheet.cell(row = time_row, column = 1).value
-                    print(time_in)
+for sheet in names:
+    print(sheet) # Prints all sheet names to cycle through
+    for row in ws.iter_rows(min_row=12, max_row=30, min_col=3, max_col=3, values_only=True): # Goes through each row in worksheet
+        for model_number in row: # Gets model from cell
+            model = str(model_number).lower()  # Makes model into string and lowercase to compare
+            for row in time_sheet.iter_rows(max_col=1): # Goes to time sheet and scans rows
+                for location in row: # Gets model from rom
+                    model_time = str(location).lower() # Converts model to string and lowercase
+                    print(location.absolute_coordinate)
+                    if model == model_time: # Compares both models together
+                        
+                        print("yes")
+
+                

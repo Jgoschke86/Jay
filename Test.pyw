@@ -32,5 +32,28 @@
 #         processID = elem['pid']
 #         os.system("taskkill /f /PID " + str(processID))
 
-i = "Hello".lower()
-print(i)
+
+
+# game_on = True
+# def Jay():
+#     if answer == "y":
+#         return True
+#     else:
+#         return False
+    
+
+# while game_on:
+#     print(game_on)
+#     answer = input("play again? ")
+#     print(answer)
+#     game_on = Jay()
+    
+import openpyxl
+from openpyxl.xml.constants import MAX_COLUMN, MAX_ROW
+wb = openpyxl.load_workbook(r"D:\Python Stuff\Test Log.xlsx")
+print(wb.sheetnames)
+ws = wb.active
+row_length = len(ws["B"])
+print(row_length)
+# for i in range(0, int(row_length)):
+#     print(i, ws.cell(row = i, column = 1).value)
