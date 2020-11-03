@@ -10,6 +10,26 @@
 #     else:
 #         print("Please enter a valid number.")
 
+# import sys
+
+# while True:
+#     if len(sys.argv) == 1:
+#         c = input("what is the degree ")
+#         if c.lower() in ("q", "quit"):
+#             print("Goodbye")
+#             break
+#         elif c.isdigit():
+#             f = 9 * int(c) / 5 + 32
+#             print(" the temp is", f)
+
+#     else:
+#         c = sys.argv[1]
+#         f = 9 * int(c) / 5 + 32
+#         print(" the temp is", f)
+#         False
+
+    
+
 import sys
 
 while True:
@@ -25,3 +45,4 @@ while True:
         print(" the temp is", f)
         if len(sys.argv) != 1:
             break
+    
