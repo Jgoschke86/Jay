@@ -48,12 +48,19 @@
 #     print(answer)
 #     game_on = Jay()
     
-import openpyxl
-from openpyxl.xml.constants import MAX_COLUMN, MAX_ROW
-wb = openpyxl.load_workbook(r"D:\Python Stuff\Test Log.xlsx")
-print(wb.sheetnames)
-ws = wb.active
-row_length = len(ws["B"])
-print(row_length)
+# import openpyxl
+# from openpyxl.xml.constants import MAX_COLUMN, MAX_ROW
+# wb = openpyxl.load_workbook(r"D:\Python Stuff\Test Log.xlsx")
+# print(wb.sheetnames)
+# ws = wb.active
+# row_length = len(ws["B"])
+# print(row_length)
 # for i in range(0, int(row_length)):
 #     print(i, ws.cell(row = i, column = 1).value)
+
+
+
+import datetime
+
+date = datetime.datetime.now()
+print(date.strftime("%x"))
