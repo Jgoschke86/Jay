@@ -1,12 +1,22 @@
 from bs4 import BeautifulSoup
 import pandas as pd
 import requests
+import datetime
 
+date = datetime.datetime.now()
+
+def set_value(row_number, assigned_value): 
+    return assigned_value[row_number] 
 
 # page = requests.get("https://www.microcenter.com/search/search_results.aspx?N=4294966995&NTK=all&sortby=pricelow&rpp=96")
 # source = page.content
 # soup = BeautifulSoup(source, "lxml")
-soup = BeautifulSoup(open(r"C:/Users/jgosc/Downloads/Processors_CPUs _ Micro Center.html"), "html.parser")
+
+# soup = BeautifulSoup(open(r"C:/Users/jgosc/Downloads/Processors_CPUs _ Micro Center.html"), "html.parser")  #Home
+soup = BeautifulSoup(open(r"C:/Python Stuff/Processors_CPUs _ Micro Center.html"), "html.parser")   #Work
+
+amd_content = pd.read_csv(r"C:\Python Stuff\amd_pricing.csv")
+intel_content = pd.read_csv(r"C:\Python Stuff\intel_pricing.csv")
 
 
 amd_proc = {}
@@ -22,7 +32,6 @@ for link in links:
             name = ' '.join(name.split()[:3])
             price = link.get("data-price")
             amd_proc[name] = price
-            # print(name, price)
 for link in links:
     if "Intel" in link.text:
         if link.get("data-name") == None:
@@ -32,11 +41,22 @@ for link in links:
             name = ' '.join(name.split()[:2])
             price = link.get("data-price")
             intel_proc[name] = price
-            # print(name, price)
-# print(amd_proc)
-# print(intel_proc)
+in_list = exists = key in amd_content.A
+for key in amd_proc.keys():
+    if key not in_list:
+        amd_content.append(key)
 
-amd_db = pd.DataFrame({"Name" : list(amd_proc.keys()), "Price" : list(amd_proc.values())})
-print(amd_db)
-intel_db = pd.DataFrame({"Name" : list(intel_proc.keys()), "Price" : list(intel_proc.values())})
-print(intel_db)
+
+amd_content[date.strftime("%x")] = amd_content["Name"].apply(set_value, args = (amd_proc, ))
+intel_content[date.strftime("%x")] = intel_content["Name"].apply(set_value, args = (intel_proc, ))
+
+# amd_db = pd.DataFrame({"Name" : list(amd_proc.keys()), "Price" : list(amd_proc.values())})
+# print(amd_db)
+# intel_db = pd.DataFrame({"Name" : list(intel_proc.keys()), "Price" : list(intel_proc.values())})
+# print(intel_db)
+
+amd_content.to_csv(r"C:\Python Stuff\amd_pricing.csv", index = False)
+intel_content.to_csv(r"C:\Python Stuff\intel_pricing.csv", index = False)
+
+print(amd_content)
+print(intel_content)
