@@ -12,8 +12,8 @@ def set_value(row_number, assigned_value):
 # source = page.content
 # soup = BeautifulSoup(source, "lxml")
 
-# soup = BeautifulSoup(open(r"C:/Users/jgosc/Downloads/Processors_CPUs _ Micro Center.html"), "html.parser")  #Home
-soup = BeautifulSoup(open(r"C:/Python Stuff/Processors_CPUs _ Micro Center.html"), "html.parser")   #Work
+# soup = BeautifulSoup(open(r"C:/Users/jgosc/Downloads/Processors_CPUs _ Micro Center.html"), "html.parser")  #Home file source
+soup = BeautifulSoup(open(r"C:/Python Stuff/Processors_CPUs _ Micro Center.html"), "html.parser")   #Work file source
 
 amd_content = pd.read_csv(r"C:\Python Stuff\amd_pricing.csv")
 intel_content = pd.read_csv(r"C:\Python Stuff\intel_pricing.csv")
@@ -43,18 +43,14 @@ for link in links:
             intel_proc[name] = price
 in_list = exists = key in amd_content.A
 for key in amd_proc.keys():
-    if key not in_list:
-        amd_content.append(key)
+    if key not in in_list:
+        amd_proc.pd.DataFrame({key : [value]})
 
 
 amd_content[date.strftime("%x")] = amd_content["Name"].apply(set_value, args = (amd_proc, ))
 intel_content[date.strftime("%x")] = intel_content["Name"].apply(set_value, args = (intel_proc, ))
 
-# amd_db = pd.DataFrame({"Name" : list(amd_proc.keys()), "Price" : list(amd_proc.values())})
-# print(amd_db)
-# intel_db = pd.DataFrame({"Name" : list(intel_proc.keys()), "Price" : list(intel_proc.values())})
-# print(intel_db)
-
+df.sort_values(by=['Name'])
 amd_content.to_csv(r"C:\Python Stuff\amd_pricing.csv", index = False)
 intel_content.to_csv(r"C:\Python Stuff\intel_pricing.csv", index = False)
 
