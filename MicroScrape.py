@@ -32,27 +32,31 @@ for link in links:
             name = ' '.join(name.split()[:3])
             price = link.get("data-price")
             amd_proc[name] = price
-for link in links:
-    if "Intel" in link.text:
-        if link.get("data-name") == None:
-            pass
-        else:
-            name = link.get("data-name")
-            name = ' '.join(name.split()[:2])
-            price = link.get("data-price")
-            intel_proc[name] = price
-in_list = exists = key in amd_content.A
-for key in amd_proc.keys():
-    if key not in in_list:
-        amd_proc.pd.DataFrame({key : [value]})
+# for link in links:
+#     if "Intel" in link.text:
+#         if link.get("data-name") == None:
+#             pass
+#         else:
+#             name = link.get("data-name")
+#             name = ' '.join(name.split()[:2])
+#             price = link.get("data-price")
+#             intel_proc[name] = price
+
+for key,value in amd_proc.items():
+    if amd_content.isin([key]).any().any():
+        pass
+    else:
+        amd_content.append({key:value}, ignore_index=True)
+        print("success")
 
 
 amd_content[date.strftime("%x")] = amd_content["Name"].apply(set_value, args = (amd_proc, ))
-intel_content[date.strftime("%x")] = intel_content["Name"].apply(set_value, args = (intel_proc, ))
+# intel_content[date.strftime("%x")] = intel_content["Name"].apply(set_value, args = (intel_proc, ))
 
-df.sort_values(by=['Name'])
+amd_content.sort_values(by = ["Name"])
+# intel_content.sort_values(by = ["Name"])
 amd_content.to_csv(r"C:\Python Stuff\amd_pricing.csv", index = False)
-intel_content.to_csv(r"C:\Python Stuff\intel_pricing.csv", index = False)
+# intel_content.to_csv(r"C:\Python Stuff\intel_pricing.csv", index = False)
 
-print(amd_content)
-print(intel_content)
+# print(amd_content)
+# print(intel_content)
