@@ -12,11 +12,11 @@ def set_value(row_number, assigned_value):
 # source = page.content
 # soup = BeautifulSoup(source, "lxml")
 
-# soup = BeautifulSoup(open(r"C:/Users/jgosc/Downloads/Processors_CPUs _ Micro Center.html"), "html.parser")  #Home file source
-soup = BeautifulSoup(open(r"C:/Python Stuff/Processors_CPUs _ Micro Center.html"), "html.parser")   #Work file source
+soup = BeautifulSoup(open("Processors_CPUs _ Micro Center.html"), "html.parser")  #Home file source
+# soup = BeautifulSoup(open(r"C:/Python Stuff/Processors_CPUs _ Micro Center.html"), "html.parser")   #Work file source
 
-amd_content = pd.read_csv(r"C:\Python Stuff\amd_pricing.csv")
-intel_content = pd.read_csv(r"C:\Python Stuff\intel_pricing.csv")
+amd_content = pd.read_csv(r"D:\Python Stuff\amd_pricing.csv")
+# intel_content = pd.read_csv(r"D:\Python Stuff\intel_pricing.csv")
 
 
 amd_proc = {}
@@ -55,11 +55,11 @@ for key,value in amd_proc.items():
 amd_content.sort_values(by = ["Name"])
 # intel_content.sort_values(by = ["Name"])
 
-# amd_content[date.strftime("%x")] = amd_content["Name"].apply(set_value, args = (amd_proc, ))
+amd_content[date.strftime("%x")] = amd_content["Name"].apply(set_value, args = (amd_proc, ))
 # intel_content[date.strftime("%x")] = intel_content["Name"].apply(set_value, args = (intel_proc, ))
 
 
-amd_content.to_csv("C:/Python Stuff/amd_pricing.csv", index = False, mode = "w")
+amd_content.to_csv("D:/Python Stuff/amd_pricing.csv", index = False, mode = "a")
 # intel_content.to_csv(r"C:\Python Stuff\intel_pricing.csv", index = False)
 
 # print(amd_content)
