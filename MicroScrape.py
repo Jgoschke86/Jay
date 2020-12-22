@@ -2,22 +2,26 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import requests
 import datetime
+import numpy as np
 
 date = datetime.datetime.now()
 
-def set_value(row_number, assigned_value): 
-    return assigned_value[row_number] 
+def set_value(row_number, assigned_value):
+    if "nan":
+        pass
+    else:
+        return assigned_value[row_number] 
 
 # page = requests.get("https://www.microcenter.com/search/search_results.aspx?N=4294966995&NTK=all&sortby=pricelow&rpp=96")
 # source = page.content
 # soup = BeautifulSoup(source, "lxml")
 
-soup = BeautifulSoup(open("Processors_CPUs _ Micro Center.html"), "html.parser")  #Home file source
-# soup = BeautifulSoup(open(r"C:/Python Stuff/Processors_CPUs _ Micro Center.html"), "html.parser")   #Work file source
+# soup = BeautifulSoup(open("Processors_CPUs _ Micro Center.html"), "html.parser")  #Home file source
+soup = BeautifulSoup(open(r"C:/Python Stuff/Processors_CPUs _ Micro Center.html"), "html.parser")   #Work file source
 
-amd_content = pd.read_csv(r"D:\Python Stuff\amd_pricing.csv")
+amd_file = pd.read_csv(r"C:/Python Stuff/amd_pricing.csv")
 # intel_content = pd.read_csv(r"D:\Python Stuff\intel_pricing.csv")
-
+amd_content = pd.DataFrame(amd_file)
 
 amd_proc = {}
 intel_proc = {}
@@ -45,21 +49,20 @@ for link in links:
 for key,value in amd_proc.items():
     new_item = {key : value}
     if amd_content.isin([key]).any().any():
-        pass
+        amd_content[date.strftime("%x")] = amd_content["Name"].map(new_item)
     else:
-        print(new_item)
-        amd_content.append(new_item, ignore_index=True)
-        print("success")
+        print(new_item, "has been added")
+        # amd_content.append(new_item, ignore_index=True)
 
-
+print(amd_content)
 amd_content.sort_values(by = ["Name"])
 # intel_content.sort_values(by = ["Name"])
 
-amd_content[date.strftime("%x")] = amd_content["Name"].apply(set_value, args = (amd_proc, ))
+# amd_content[date.strftime("%x")] = amd_content["Name"].apply(set_value, args = (amd_proc, ))
 # intel_content[date.strftime("%x")] = intel_content["Name"].apply(set_value, args = (intel_proc, ))
 
 
-amd_content.to_csv("D:/Python Stuff/amd_pricing.csv", index = False, mode = "a")
+amd_content.to_csv("C:/Python Stuff/amd_pricing.csv", index = False, mode = "a")
 # intel_content.to_csv(r"C:\Python Stuff\intel_pricing.csv", index = False)
 
 # print(amd_content)
