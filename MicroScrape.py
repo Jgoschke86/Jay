@@ -2,7 +2,6 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import requests
 import datetime
-import numpy as np
 
 date = datetime.datetime.now()
 
@@ -47,22 +46,23 @@ for link in links:
 #             intel_proc[name] = price
 
 for key,value in amd_proc.items():
-    new_item = {key : value}
-    if amd_content.isin([key]).any().any():
-        amd_content[date.strftime("%x")] = amd_content["Name"].map(new_item)
+    new_item = {key:value}
+    if amd_content.isin(new_item).any().any():
+        pass
     else:
-        print(new_item, "has been added")
-        # amd_content.append(new_item, ignore_index=True)
+        print(new_item, " added")
+        amd_content.append(new_item, ignore_index=True)
 
+amd_content[date.strftime("%x")] = amd_content["Name"].map(amd_proc)
 print(amd_content)
-amd_content.sort_values(by = ["Name"])
+# amd_content.sort_values(by = ["Name"])
 # intel_content.sort_values(by = ["Name"])
 
 # amd_content[date.strftime("%x")] = amd_content["Name"].apply(set_value, args = (amd_proc, ))
 # intel_content[date.strftime("%x")] = intel_content["Name"].apply(set_value, args = (intel_proc, ))
 
 
-amd_content.to_csv("C:/Python Stuff/amd_pricing.csv", index = False, mode = "a")
+amd_content.to_csv("C:/Python Stuff/amd_pricing.csv",index = False)
 # intel_content.to_csv(r"C:\Python Stuff\intel_pricing.csv", index = False)
 
 # print(amd_content)
