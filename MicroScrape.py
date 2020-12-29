@@ -2,15 +2,14 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import requests
 import datetime
-import html5lib
 
 date = datetime.datetime.now()
 
 
-page = requests.get(r"https://www.microcenter.com/search/search_results.aspx?Ntk=all&sortby=pricelow&N=4294966995&myStore=false")
-soup = BeautifulSoup(page.content, "html.parser")
+page = requests.get(r"https://www.microcenter.com/search/search_results.aspx?N=4294966995&NTK=all&sortby=pricelow&myStore=false&rpp=96")
+soup = BeautifulSoup(page.text, "html.parser")
 
-# soup = BeautifulSoup(open("Processors_CPUs _ Micro Center.html"), "html5lib")  #Home file source
+# soup = BeautifulSoup(open("Processors_CPUs _ Micro Center.html"), "html.parser")  #Home file source
 # soup = BeautifulSoup(open(r"D:/Python Stuff/Processors_CPUs _ Micro Center.html"), "html.parser")   #Work file source
 
 amd_file = pd.read_csv(r"D:/Python Stuff/amd_pricing.csv")
