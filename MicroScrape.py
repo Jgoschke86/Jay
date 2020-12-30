@@ -2,10 +2,12 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import requests
 import datetime
+import subprocess
+
+
+
 
 date = datetime.datetime.now()
-
-
 page = requests.get(r"https://www.microcenter.com/search/search_results.aspx?N=4294966995&NTK=all&sortby=pricelow&myStore=false&rpp=96")
 soup = BeautifulSoup(page.text, "html.parser")
 
@@ -71,3 +73,6 @@ print(amd_content)
 print(intel_content)
 amd_content.to_csv("D:/Python Stuff/amd_pricing.csv",index = False)
 intel_content.to_csv("D:/Python Stuff/intel_pricing.csv", index = False)
+
+
+subprocess.call("Proc_Price_analyze.py", shell = True)
