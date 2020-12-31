@@ -14,8 +14,8 @@ soup = BeautifulSoup(page.text, "html.parser")
 # soup = BeautifulSoup(open("Processors_CPUs _ Micro Center.html"), "html.parser")  #Home file source
 # soup = BeautifulSoup(open(r"D:/Python Stuff/Processors_CPUs _ Micro Center.html"), "html.parser")   #Work file source
 
-amd_file = pd.read_csv(r"D:/Python Stuff/amd_pricing.csv")
-intel_file = pd.read_csv(r"D:/Python Stuff/intel_pricing.csv")
+amd_file = pd.read_csv(r"D:/Python Stuff/WebScrapers/Processors/amd_pricing.csv")
+intel_file = pd.read_csv(r"D:/Python Stuff/WebScrapers/Processors/intel_pricing.csv")
 amd_content = pd.DataFrame(amd_file)
 intel_content = pd.DataFrame(intel_file)
 
@@ -71,8 +71,8 @@ intel_content = intel_content.sort_values(by = ["Name"])
 
 print(amd_content)
 print(intel_content)
-amd_content.to_csv("D:/Python Stuff/amd_pricing.csv",index = False)
-intel_content.to_csv("D:/Python Stuff/intel_pricing.csv", index = False)
+amd_content.to_csv("D:/Python Stuff/WebScrapers/Processors/amd_pricing.csv",index = False)
+intel_content.to_csv("D:/Python Stuff/WebScrapers/Processors/intel_pricing.csv", index = False)
 
 
 subprocess.call("Proc_Price_analyze.py", shell = True)
