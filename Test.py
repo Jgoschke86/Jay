@@ -60,7 +60,6 @@
 
 
 
-import datetime
-
-date = datetime.datetime.now()
-print(date.strftime("%x"))
+# import datetime
+# date = datetime.datetime.now()
+# print(date.strftime("%x"))
