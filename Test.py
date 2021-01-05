@@ -1,3 +1,15 @@
+speed = int(input("What is the speed? "))
+over_speed = int((speed - 70)/5)
+if over_speed <= 12:
+    print(f"Points {over_speed}")
+else:
+    print("License suspended")
+
+
+
+
+
+
 # from selenium import webdriver
 # from selenium.webdriver.common.keys import Keys
 # import os, time, psutil
@@ -63,3 +75,5 @@
 # import datetime
 # date = datetime.datetime.now()
 # print(date.strftime("%x"))
+
+
