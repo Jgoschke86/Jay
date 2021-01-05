@@ -55,6 +55,6 @@ config.set(null, "microdata", {"waitTimeMs":500});
 config.set("606396843472162", "prohibitedSources", {"prohibitedSources":[{"domain":"07fa83bffdac228b2086f0f6a4b74234b3e5759028372d11bf8275d9ae86ba70"},{"domain":"f4c91c2f92fd2894823b5035b1ad1943852e660e1f43252fd7ae69088e9fcc55"}]});
 fbq.loadPlugin("prohibitedsources");
 instance.optIn("606396843472162", "ProhibitedSources", true);
-config.set("606396843472162", "unwantedData", {"blacklisted_keys":{"PageView":{"cd":[],"url":[]}},"sensitive_keys":null});
+config.set("606396843472162", "unwantedData", {"blacklisted_keys":{"PageView":{"cd":[],"url":["lat","long","Phone","address"]}},"sensitive_keys":null});
 fbq.loadPlugin("unwanteddata");
 instance.optIn("606396843472162", "UnwantedData", true);instance.configLoaded("606396843472162"); }});
