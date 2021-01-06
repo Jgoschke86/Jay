@@ -1,13 +1,17 @@
-speed = int(input("What is the speed? "))
-over_speed = int((speed - 70)/5)
-if over_speed <= 12:
-    print(f"Points {over_speed}")
-else:
-    print("License suspended")
+# speed = int(input("What is the speed? "))
+# over_speed = int((speed - 70)/5)
+# if over_speed <= 12:
+#     print(f"Points {over_speed}")
+# else:
+#     print("License suspended")
 
+# print("Hello World")
+# print("Hello\nWorld")
+# print("Hello \n\tWorld")
 
-
-
+# name = input("Name please ")
+# split_name = name.split()
+# print(" ".join(split_name[::-1]))
 
 
 # from selenium import webdriver
@@ -75,5 +79,3 @@ else:
 # import datetime
 # date = datetime.datetime.now()
 # print(date.strftime("%x"))
-
-
