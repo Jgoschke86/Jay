@@ -15,25 +15,21 @@ intel_file.set_index("Name", inplace = True)
 name = []
 min = []
 max = []
-aver = []
 
-all_data = {"Name":name, "Min $":min, "Max $":max, "Aver $":aver}
+
+all_data = {"Name":name, "Min $":min, "Max $":max}
 
 for file in files:
     for indx,row in file.iterrows():
         price = row.values
-        aver_price = np.nanmean(price)
-        aver_price = np.around(aver_price, decimals = 2)
         high_price = np.nanmax(price)
         low_price = np.nanmin(price)
         name.append(indx)
         min.append(low_price)
         max.append(high_price)
-        aver.append(aver_price)
         # print(f"""{indx}
         #         Min cost {low_price}
-        #         High {high_price}
-        #         Average {aver_price}""")
+        #         High {high_price}""")
 
 df = pd.DataFrame(all_data)
 df.to_csv("D:/Python Stuff/Jay/WebScrapers/Processors/Proc_Price_Data.csv", index = False)
