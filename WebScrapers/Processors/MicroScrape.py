@@ -2,7 +2,6 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import requests
 import datetime
-import subprocess
 
 
 
@@ -75,4 +74,4 @@ amd_content.to_csv("D:/Python Stuff/Jay/WebScrapers/Processors/amd_pricing.csv",
 intel_content.to_csv("D:/Python Stuff/Jay/WebScrapers/Processors/intel_pricing.csv", index = False)
 
 
-subprocess.call("D:/Python Stuff/WebScrapers/Processors/Proc_Price_analyze.py", shell = True)
+exec(open("D:/Python Stuff/WebScrapers/Processors/Proc_Price_analyze.py").read())
