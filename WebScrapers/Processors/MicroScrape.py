@@ -74,4 +74,4 @@ amd_content.to_csv("D:/Python Stuff/Jay/WebScrapers/Processors/amd_pricing.csv",
 intel_content.to_csv("D:/Python Stuff/Jay/WebScrapers/Processors/intel_pricing.csv", index = False)
 
 
-exec(open("D:/Python Stuff/WebScrapers/Processors/Proc_Price_analyze.py").read())
+exec(open("D:/Python Stuff/Jay/WebScrapers/Processors/Proc_Price_analyze.py").read())
