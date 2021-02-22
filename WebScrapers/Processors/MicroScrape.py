@@ -7,17 +7,20 @@ import datetime
 
 
 date = datetime.datetime.now()
-page = requests.get(r"https://www.microcenter.com/search/search_results.aspx?N=4294966995&NTK=all&sortby=pricelow&myStore=false&rpp=96")
-soup = BeautifulSoup(page.text, "html.parser")
-
-# soup = BeautifulSoup(open("Processors_CPUs _ Micro Center.html"), "html.parser")  #Home file source
-# soup = BeautifulSoup(open(r"D:/Python Stuff/Processors_CPUs _ Micro Center.html"), "html.parser")   #Work file source
+proc_page = requests.get(r"https://www.microcenter.com/search/search_results.aspx?N=4294966995&NTK=all&sortby=pricelow&myStore=false&rpp=96")
+proc_soup = BeautifulSoup(proc_page.text, "html.parser")
+# vid_page = requests.get(r"https://www.microcenter.com/search/search_results.aspx?N=4294966937&NTK=all&sortby=pricelow&rpp=96&myStore=false")
+# vid_soup = BeautifulSoup(vid_page.text, "html.parser")
+# proc_soup = BeautifulSoup(open("Processors_CPUs _ Micro Center.html"), "html.parser")  #Home file source
+# proc_soup = BeautifulSoup(open(r"D:/Python Stuff/Processors_CPUs _ Micro Center.html"), "html.parser")   #Work file source
+vid_soup = BeautifulSoup(open(r"D:/Python Stuff/Video Cards _ Micro Center", "html.parser"))
 
 amd_file = pd.read_csv(r"D:/Python Stuff/Jay/WebScrapers/Processors/amd_pricing.csv")
 intel_file = pd.read_csv(r"D:/Python Stuff/Jay/WebScrapers/Processors/intel_pricing.csv")
+vid_file = pd.read_csv(r"D:/Python Stuff/vid_pricing.csv")
 amd_content = pd.DataFrame(amd_file)
 intel_content = pd.DataFrame(intel_file)
-
+vid_content = pd.DataFrame(vid_file)
 
 amd_proc_list = amd_content['Name'].tolist()
 intel_proc_list = intel_content['Name'].tolist()
@@ -25,7 +28,7 @@ append_to_csv = {}
 amd_proc = {}
 intel_proc = {}
 
-links = soup.find_all("a")
+links = proc_soup.find_all("a")
 for link in links:
     if "AMD" in link.text:
         if link.get("data-name") == None:
