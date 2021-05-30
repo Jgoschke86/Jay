@@ -3,8 +3,8 @@ import numpy as np
 
 
 
-amd_file = pd.read_csv(r"D:/Python Stuff/Jay/WebScrapers/Processors/amd_pricing.csv")
-intel_file = pd.read_csv(r"D:/Python Stuff/Jay/WebScrapers/Processors/intel_pricing.csv")
+amd_file = pd.read_csv(r"C:/Python Stuff/Jay/WebScrapers/Processors/amd_pricing.csv")
+intel_file = pd.read_csv(r"C:/Python Stuff/Jay/WebScrapers/Processors/intel_pricing.csv")
 amd_file = pd.DataFrame(amd_file)
 intel_file = pd.DataFrame(intel_file)
 files = [amd_file, intel_file]
@@ -32,4 +32,4 @@ for file in files:
         #         High {high_price}""")
 
 df = pd.DataFrame(all_data)
-df.to_csv("D:/Python Stuff/Jay/WebScrapers/Processors/Proc_Price_Data.csv", index = False)
+df.to_csv("C:/Python Stuff/Jay/WebScrapers/Processors/Proc_Price_Data.csv", index = False)
