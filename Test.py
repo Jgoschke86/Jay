@@ -80,4 +80,9 @@
 # date = datetime.datetime.now()
 # print(date.strftime("%x"))
 
-print(99%100)
+change = 235
+number = []
+while True:
+    if change >= 100:
+        change = change - 100
+        n
