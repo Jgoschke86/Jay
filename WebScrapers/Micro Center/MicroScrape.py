@@ -5,20 +5,26 @@ import datetime
 
 
 
-
+#  Todays date
 date = datetime.datetime.now()
+
+# Opening Webpage and converting to readable format
 proc_page = requests.get(r"https://www.microcenter.com/search/search_results.aspx?N=4294966995&NTK=all&sortby=pricelow&myStore=false&rpp=96")
 proc_soup = BeautifulSoup(proc_page.text, "html.parser")
 # vid_page = requests.get(r"https://www.microcenter.com/search/search_results.aspx?N=4294966937&NTK=all&sortby=pricelow&rpp=96&myStore=false")
 # vid_soup = BeautifulSoup(vid_page.text, "html.parser")
 # vid_soup = BeautifulSoup(open(r"D:/Python Stuff/Video Cards _ Micro Center", "html.parser"))
 
+
+# Opening existing data
 amd_file = pd.read_csv(r"C:/Python Stuff/WebScrapers/Micro Center/Data/amd_pricing.csv")
 intel_file = pd.read_csv(r"C:/Python Stuff/WebScrapers/Micro Center/Data/intel_pricing.csv")
 # vid_file = pd.read_csv(r"D:/Python Stuff/vid_pricing.csv")
 amd_content = pd.DataFrame(amd_file)
 intel_content = pd.DataFrame(intel_file)
 # vid_content = pd.DataFrame(vid_file)
+
+
 
 amd_proc_list = amd_content['Name'].tolist()
 intel_proc_list = intel_content['Name'].tolist()
