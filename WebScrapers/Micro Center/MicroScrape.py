@@ -11,12 +11,10 @@ proc_page = requests.get(r"https://www.microcenter.com/search/search_results.asp
 proc_soup = BeautifulSoup(proc_page.text, "html.parser")
 # vid_page = requests.get(r"https://www.microcenter.com/search/search_results.aspx?N=4294966937&NTK=all&sortby=pricelow&rpp=96&myStore=false")
 # vid_soup = BeautifulSoup(vid_page.text, "html.parser")
-# proc_soup = BeautifulSoup(open("Processors_CPUs _ Micro Center.html"), "html.parser")  #Home file source
-# proc_soup = BeautifulSoup(open(r"D:/Python Stuff/Processors_CPUs _ Micro Center.html"), "html.parser")   #Work file source
 # vid_soup = BeautifulSoup(open(r"D:/Python Stuff/Video Cards _ Micro Center", "html.parser"))
 
-amd_file = pd.read_csv(r"Z:/Python Stuff/Jay\WebScrapers/Processors/amd_pricing.csv")
-intel_file = pd.read_csv(r"Z:/Python Stuff/Jay\WebScrapers/Processors/intel_pricing.csv")
+amd_file = pd.read_csv(r"C:/Python Stuff/WebScrapers/Micro Center/Data/amd_pricing.csv")
+intel_file = pd.read_csv(r"C:/Python Stuff/WebScrapers/Micro Center/Data/intel_pricing.csv")
 # vid_file = pd.read_csv(r"D:/Python Stuff/vid_pricing.csv")
 amd_content = pd.DataFrame(amd_file)
 intel_content = pd.DataFrame(intel_file)
@@ -96,8 +94,8 @@ intel_content = intel_content.sort_values(by = ["Name"])
 
 print(amd_content)
 print(intel_content)
-amd_content.to_csv("Z:\Python Stuff\Jay\WebScrapers\Processors/amd_pricing.csv",index = False)
-intel_content.to_csv("Z:\Python Stuff\Jay\WebScrapers\Processors/intel_pricing.csv", index = False)
+amd_content.to_csv("C:/Python Stuff/WebScrapers/Micro Center/Data/amd_pricing.csv",index = False)
+intel_content.to_csv("C:/Python Stuff/WebScrapers/Micro Center/Data/intel_pricing.csv", index = False)
 
 
-exec(open("Z:/Python Stuff/Jay/WebScrapers/Processors/Proc_Price_analyze.py").read())
+exec(open("C:/Python Stuff/WebScrapers/Micro Center/Proc_Price_analyze.py").read())
