@@ -1,0 +1,183 @@
+
+/* 
+	colors used 
+    white
+    midnightblue
+    maroon
+	#c9cea6  background green
+	#73a9b2
+	#c3dadf; 
+	#003537;  darkest green
+    #e1e8e7; paler version of green in logo
+*/
+
+/* TWITTER     */
+div#twitter_div {
+    background-color: #e1e8e7;
+}
+.twitter_name {
+    color: maroon;
+}
+/* COMING SOON */
+.coming_soon{
+    color: maroon;
+    font-style: italic;
+}
+
+
+/* END TWITTER */
+
+.header {
+    background-color: white; */
+}
+
+.courseduration {
+    font-weight: bold;
+    font-style: italic;
+    color: maroon;
+}
+
+.quotedtext {
+    padding: 20px;
+}
+
+.aboutcourses {
+    font-style: italic;
+}
+
+.clarecaption {
+    color: white;
+}
+
+h1 {
+    color: maroon;
+}
+
+.leftcol {
+    float: left;
+    width: 20%;
+    background-color: midnightblue;
+}
+.rightcol {
+    float: right;
+    width: 80%;
+    background-color: white;
+}
+
+.content {
+  width: 80%;
+  color: #003537;  /*  darkest green */
+  margin-left: auto ;
+  margin-right: auto ;
+  padding: 10px;
+  background-color: white;
+}
+
+.p1content {
+  width: 80%;
+  color: #003537;  /*  darkest green */
+  margin-left: auto ;
+  margin-right: auto ;
+  background-color: white;
+}
+
+
+li {
+    font-size: 125%;
+}
+
+body {
+    font-family: helvetica;
+    background-color: lightblue;
+}
+
+/* panel stuff */
+	.section_hdr {
+		font-size: large;
+		font-weight: bold;
+		color: blue; 
+	}
+
+	.coursename_hdr {
+		font-size: large;
+		color: blue;
+		background-color: lightgrey; 
+		width:50%;
+	}
+
+	.panel_sm,.panel_lg {
+		padding: 1%;
+	}	
+
+	.panel_lg {
+		display: none;
+		border-style: solid;
+		border-width: medium;
+		border-color: #73a9b2;
+    }
+/* end panel stuff */
+	p.instructions {
+		border-style: solid;
+		border-width: thin;
+		font-size: small;
+		padding: 3px;
+		text-align: center;
+		margin-left: 20%;
+		margin-right: 20%;
+	}
+
+/* begin css tabs */
+
+ul#tabnav { /* general settings */
+text-align: left; /* set to left, right or center */
+margin: 1em 0 1em 0; /* set margins as desired */
+font: bold 11px verdana, arial, sans-serif; /* set font as desired */
+border-bottom: 3px solid midnightblue; /* set border COLOR as desired */
+list-style-type: none;
+padding: 3px 10px 3px 10px; /* THIRD number must change with respect to padding-top (X) below */
+}
+
+ul#tabnav li { /* do not change */
+display: inline;
+}
+
+/* settings for selected tab */
+body#tab1 li.tab1, body#tab2 li.tab2, body#tab3 li.tab3, body#tab4 li.tab4 { 
+    /* set border color to page background color */
+    border-bottom: 1px solid #003537; 
+
+    /* set background color to match above border color */
+    background-color: #003537; 
+}
+
+/* settings for selected tab link */
+body#tab1 li.tab1 a, body#tab2 li.tab2 a, body#tab3 li.tab3 a, body#tab4 li.tab4 a { 
+    /* set selected tab background color as desired */
+    background-color: white; 
+
+    /* set selected tab link color as desired */
+    color: purple;
+
+    position: relative;
+    top: 1px;
+    padding-top: 4px; /* must change with respect to padding (X) above and below */
+}
+
+ul#tabnav li a { /* settings for all tab links */
+padding: 6px 9px; /* set padding (tab size) as desired; FIRST number must change with respect to padding-top (X) above */
+border: 1px solid #003537; /* set border COLOR as desired; usually matches border color specified in #tabnav */
+/*	#73a9b2
+	#c3dadf;  */
+background-color: #c3dadf; /* set unselected tab background color as desired */
+color: #003537; /* set unselected tab link color as desired */
+margin-right: 0px; /* set additional spacing between tabs as desired */
+text-decoration: none;
+border-bottom: none;
+}
+
+ul#tabnav a:hover { /* settings for hover effect */
+background: #fff; /* set desired hover color */
+}
+
+/* end css tabs */
+
