@@ -1,6 +1,5 @@
 """  Scrapes website for price data  """
 import datetime
-import os
 from bs4 import BeautifulSoup
 import pandas as pd
 import requests
@@ -11,11 +10,11 @@ import requests
 date = datetime.datetime.now()
 
 # Opening Webpage and converting to readable format
-proc_page = requests.get(r"https://www.microcenter.com/search/search_results.aspx?N=4294966995&NTK=all&sortby=pricelow&rpp=96")
+proc_page = requests.get(r"https://www.microcenter.com/search/search_results.aspx?N=4294966995&NTK=all&sortby=pricelow&rpp=96&myStore=false")
 proc_soup = BeautifulSoup(proc_page.text, "html.parser")
-vid_page1 = requests.get(r"https://www.microcenter.com/search/search_results.aspx?N=4294966937&NTK=all&sortby=pricehigh&rpp=96")
+vid_page1 = requests.get(r"https://www.microcenter.com/search/search_results.aspx?N=4294966937&NTK=all&sortby=pricehigh&rpp=96&myStore=false")
 vid_soup1 = BeautifulSoup(vid_page1.text, "html.parser")
-vid_page2 = requests.get(r"https://www.microcenter.com/search/search_results.aspx?N=4294966937&NTK=all&sortby=pricehigh&rpp=96&page=2")
+vid_page2 = requests.get(r"https://www.microcenter.com/search/search_results.aspx?N=4294966937&NTK=all&sortby=pricehigh&rpp=96&page=2&myStore=false")
 vid_soup2 = BeautifulSoup(vid_page2.text, "html.parser")
 
 
@@ -27,11 +26,10 @@ amd_content = pd.DataFrame(amd_file)
 intel_content = pd.DataFrame(intel_file)
 vid_content = pd.DataFrame(vid_file)
 
-
-
-amd_proc_list = amd_content['Name'].tolist()  # Takes existing processors and puts names into a list for comparison
-intel_proc_list = intel_content['Name'].tolist()  # Takes existing processors and puts names into a list for comparison
-vid_list = vid_content['Name'].tolist()   # Takes existing video cards and puts names into a list for comparison
+# Takes existing data and puts names into a list for comparison
+amd_proc_list = amd_content['Name'].tolist()
+intel_proc_list = intel_content['Name'].tolist()
+vid_list = vid_content['Name'].tolist()
 append_to_csv = {}   # Dictionary for new items
 amd_proc = {}   #  Stores the data to write to csv
 intel_proc = {}   #  Stores the data to write to csv
@@ -58,7 +56,7 @@ for link in proc_links:
             name = ' '.join(name.split()[:2])  #  Cuts off words of the name to make easier to read
             price = link.get("data-price")  #  Gets price of processor
             intel_proc[name] = price  #  Adds data to dictionary
-
+            
 for link in vid_links1:  #  Page 1 of video cards
     if link.get("data-name") is None:  #  If not a valid instance, skips it
         pass
@@ -124,5 +122,4 @@ amd_content.to_csv("C:/Python Stuff/WebScrapers/Micro Center/Data/amd_pricing.cs
 intel_content.to_csv("C:/Python Stuff/WebScrapers/Micro Center/Data/intel_pricing.csv", index = False)  #  Writes to file and saves it
 vid_content.to_csv(r"C:/Python Stuff/WebScrapers/Micro Center/Data/vid_pricing.csv", index = False)  #  Writes to file and saves it
 
-os.system('Proc_Price_analyze.py')
-# exec(open("C:/Python Stuff/WebScrapers/Micro Center/Proc_Price_analyze.py").read())
+exec(open("C:/Python Stuff/WebScrapers/Micro Center/Proc_Price_analyze.py").read())
