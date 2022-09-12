@@ -2,7 +2,6 @@ import random
 import os
 
 
-
 p_turn = 0
 c_turn = 0
 turn = True
@@ -13,15 +12,19 @@ cards_used = []
 cards = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A",
          2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A",
          2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A",
-         2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A",]
+         2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A", ]
+
 
 def new_card():
     card = random.choice(cards)
     cards.remove(card)
     cards_used.append(card)
     return card
+
+
 def cls():
     os.system("cls")
+
 
 while game_on:
     cls()
@@ -43,7 +46,8 @@ while game_on:
             turn = False
             lose = True
             break
-        turn_select = input("What would you like to do?\n 1. Hit\n 2. Stay\n 3. Quit\n ")
+        turn_select = input(
+            "What would you like to do?\n 1. Hit\n 2. Stay\n 3. Quit\n ")
         if turn_select == "1":
             p_cards.append(new_card())
             cls()
@@ -64,7 +68,6 @@ while game_on:
                     else:
                         score += 11
             print(p_cards)
-
 
         elif turn_select == "2":
             while True:
@@ -98,7 +101,6 @@ while game_on:
                     turn = False
                     cls()
                     break
-                    
 
         elif turn_select == "3":
             game_on = False
@@ -106,7 +108,7 @@ while game_on:
         else:
             print("Please enter a valid selection of 1, 2, or 3")
     while lose == True:
-        
+
         print(p_cards)
         print(c_cards)
         print("You lose!")
@@ -117,7 +119,7 @@ while game_on:
             c_score = 0
             score = 0
             break
-            
+
         if play_again == "n":
             game_on = False
             break
@@ -125,7 +127,7 @@ while game_on:
             cls()
             print("Not a valid answer, please answer \"y\" or \"n\"")
     while win == True:
-        print(p_cards)    
+        print(p_cards)
         print(c_cards)
         print("You win!")
         play_again = input("Would you like to play again? y/n ")
@@ -135,14 +137,10 @@ while game_on:
             c_score = 0
             score = 0
             break
-            
+
         if play_again == "n":
             game_on = False
             break
         else:
             cls()
             print("Not a valid answer, please answer \"y\" or \"n\"")
-        
-                
-    
-    

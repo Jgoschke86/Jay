@@ -21,6 +21,7 @@ all_data = {"Name":name, "Min $":min, "Max $":max}
 
 for file in files:
     for indx,row in file.iterrows():
+        # print(indx)
         price = row.values
         high_price = np.nanmax(price)
         low_price = np.nanmin(price)
