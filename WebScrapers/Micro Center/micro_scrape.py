@@ -115,9 +115,9 @@ amd_content = amd_content.sort_values(by = ["Name"])  #  Sorts file by name of p
 intel_content = intel_content.sort_values(by = ["Name"])  #  Sorts file by name of processor
 vid_content = vid_content.sort_values(by = ["Name"])  #  Sorts file by name of cards
 print("Saving data")
-# print(amd_content)
-# print(intel_content)
-# print(vid_content)
+print(amd_content)
+print(intel_content)
+print(vid_content)
 amd_content.to_csv("C:/Python Stuff/WebScrapers/Micro Center/Data/amd_pricing.csv",index = False)  #  Writes to file and saves it
 intel_content.to_csv("C:/Python Stuff/WebScrapers/Micro Center/Data/intel_pricing.csv", index = False)  #  Writes to file and saves it
 vid_content.to_csv(r"C:/Python Stuff/WebScrapers/Micro Center/Data/vid_pricing.csv", index = False)  #  Writes to file and saves it
