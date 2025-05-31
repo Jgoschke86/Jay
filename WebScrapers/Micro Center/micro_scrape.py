@@ -89,7 +89,8 @@ for key,value in amd_proc.items():
     else:
         print(new_item, " added")  #  Prints new item to be added to file
         append_to_csv["Name"] = key  #  Adds name of processor to file
-        amd_content = amd_content.append(append_to_csv, ignore_index=True)
+        new_row = pd.DataFrame([append_to_csv])  #  Creates new row to be added to file
+        amd_content = pd.concat([amd_content, new_row], ignore_index=True)
 for key,value in intel_proc.items():
     new_item = {key:value}  #  Takes each instance of data
     if key in intel_proc_list:  #  If processor already in file(dictionary) skips it
@@ -97,7 +98,8 @@ for key,value in intel_proc.items():
     else:
         print(new_item, " added")  #  Prints new item to be added to file
         append_to_csv["Name"] = key  #  Adds name of processor to file
-        intel_content = intel_content.append(append_to_csv, ignore_index=True)
+        new_row = pd.DataFrame([append_to_csv])  #  Creates new row to be added to file
+        intel_content = pd.concat([intel_content, new_row],ignore_index=True)
 for key,value in vid_card.items():
     new_item = {key:value}  #  Takes each instance of data
     if key in vid_list:  #  If card already in file(dictionary) skips it
@@ -105,7 +107,8 @@ for key,value in vid_card.items():
     else:
         print(new_item, " added")  #  Prints new item to be added to file
         append_to_csv["Name"] = key  #  Adds name of new card to be added to dictionary
-        vid_content = vid_content.append(append_to_csv, ignore_index=True)  #  Adds new card from dict to file under "Name" column
+        new_row = pd.DataFrame([append_to_csv])  #  Creates new row to be added to file
+        vid_content = pd.concat([vid_content, new_row], ignore_index=True)  #  Adds new card from dict to file under "Name" column
 print("Writing to file")
 amd_content[date.strftime("%x")] = amd_content["Name"].map(amd_proc)  #  Creates new column with date, finds processor name and adds price to column
 intel_content[date.strftime("%x")] = intel_content["Name"].map(intel_proc)  #  Creates new column with date, finds processor name and adds price to column
